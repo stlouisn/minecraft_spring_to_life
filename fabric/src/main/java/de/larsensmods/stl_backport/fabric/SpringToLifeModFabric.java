@@ -1,8 +1,12 @@
 package de.larsensmods.stl_backport.fabric;
 
+import de.larsensmods.stl_backport.entity.STLEntityTypes;
+import de.larsensmods.stl_backport.entity.WarmChicken;
+import de.larsensmods.stl_backport.fabric.register.EntityRegistry;
 import net.fabricmc.api.ModInitializer;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 
 public final class SpringToLifeModFabric implements ModInitializer {
     @Override
@@ -13,5 +17,9 @@ public final class SpringToLifeModFabric implements ModInitializer {
 
         // Run our common setup.
         SpringToLifeMod.init();
+
+        EntityRegistry.initEntityTypes();
+
+        FabricDefaultAttributeRegistry.register(STLEntityTypes.WARM_CHICKEN.get(), WarmChicken.createAttributes());
     }
 }
