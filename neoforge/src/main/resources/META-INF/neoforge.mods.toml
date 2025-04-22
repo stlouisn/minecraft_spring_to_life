@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+#issueTrackerURL = ""
+license = "none"
+
+[[mods]]
+modId = "spring_to_life"
+version = "${version}"
+displayName = "Spring to Life"
+authors = "LarsenR"
+description = '''
+This mod ports some features from the "Spring to Life" feature drop (Minecraft 1.21.5) back to 1.21.1
+'''
+#logoFile = ""
+
+[[dependencies.spring_to_life]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.spring_to_life]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "spring_to_life.mixins.json"
