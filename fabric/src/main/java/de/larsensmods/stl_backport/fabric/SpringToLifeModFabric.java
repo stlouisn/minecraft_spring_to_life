@@ -1,5 +1,6 @@
 package de.larsensmods.stl_backport.fabric;
 
+import de.larsensmods.stl_backport.entity.ColdChicken;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.WarmChicken;
 import de.larsensmods.stl_backport.fabric.register.EntityRegistry;
@@ -21,5 +22,6 @@ public final class SpringToLifeModFabric implements ModInitializer {
         EntityRegistry.initEntityTypes();
 
         FabricDefaultAttributeRegistry.register(STLEntityTypes.WARM_CHICKEN.get(), WarmChicken.createAttributes());
+        FabricDefaultAttributeRegistry.register(STLEntityTypes.COLD_CHICKEN.get(), ColdChicken.createAttributes());
     }
 }

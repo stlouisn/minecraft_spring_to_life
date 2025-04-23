@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport.neoforge.register;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import de.larsensmods.stl_backport.entity.ColdChicken;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.WarmChicken;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,6 +22,14 @@ public class EntityRegistry {
         STLEntityTypes.WARM_CHICKEN = register(
                 "warm_chicken",
                 EntityType.Builder.of(WarmChicken::new, MobCategory.CREATURE)
+                        .sized(0.4F, 0.7F)
+                        .eyeHeight(0.644F)
+                        .passengerAttachments(new Vec3(0.0, 0.7, -0.1))
+                        .clientTrackingRange(10)
+        );
+        STLEntityTypes.COLD_CHICKEN = register(
+                "cold_chicken",
+                EntityType.Builder.of(ColdChicken::new, MobCategory.CREATURE)
                         .sized(0.4F, 0.7F)
                         .eyeHeight(0.644F)
                         .passengerAttachments(new Vec3(0.0, 0.7, -0.1))

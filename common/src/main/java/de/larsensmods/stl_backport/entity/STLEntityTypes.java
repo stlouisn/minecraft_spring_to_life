@@ -7,5 +7,6 @@ import java.util.function.Supplier;
 public abstract class STLEntityTypes {
 
     public static Supplier<EntityType<WarmChicken>> WARM_CHICKEN;
+    public static Supplier<EntityType<ColdChicken>> COLD_CHICKEN;
 
 }
