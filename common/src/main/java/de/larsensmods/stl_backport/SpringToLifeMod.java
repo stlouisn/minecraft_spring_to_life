@@ -1,5 +1,7 @@
 package de.larsensmods.stl_backport;
 
+import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,8 +11,11 @@ public final class SpringToLifeMod {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(SpringToLifeMod.class);
 
-    public static void init() {
+    public static void init(IRegistrationProvider regProvider) {
         LOGGER.info("SpringToLifeMod common init");
+
+        STLEntityTypes.initEntityTypes(regProvider);
+
         LOGGER.info("SpringToLifeMod end common init");
     }
 }

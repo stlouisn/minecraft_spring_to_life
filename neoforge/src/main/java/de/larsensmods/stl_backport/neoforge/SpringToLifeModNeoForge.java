@@ -1,6 +1,6 @@
 package de.larsensmods.stl_backport.neoforge;
 
-import de.larsensmods.stl_backport.neoforge.register.EntityRegistry;
+import de.larsensmods.stl_backport.neoforge.register.NeoForgeRegistrationProvider;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
@@ -9,9 +9,11 @@ import de.larsensmods.stl_backport.SpringToLifeMod;
 @Mod(SpringToLifeMod.MOD_ID)
 public final class SpringToLifeModNeoForge {
     public SpringToLifeModNeoForge(IEventBus bus) {
-        // Run our common setup.
-        SpringToLifeMod.init();
+        NeoForgeRegistrationProvider registrationProvider = new NeoForgeRegistrationProvider();
 
-        EntityRegistry.initEntityTypes(bus);
+        // Run our common setup.
+        SpringToLifeMod.init(registrationProvider);
+
+        registrationProvider.finishRegistration(bus);
     }
 }
