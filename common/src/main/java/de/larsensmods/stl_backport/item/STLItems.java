@@ -2,6 +2,7 @@ package de.larsensmods.stl_backport.item;
 
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
+import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 
@@ -12,6 +13,9 @@ public class STLItems {
     public static Supplier<Item> WARM_CHICKEN_SPAWN_EGG;
     public static Supplier<Item> COLD_CHICKEN_SPAWN_EGG;
 
+    public static Supplier<Item> BLUE_EGG;
+    public static Supplier<Item> BROWN_EGG;
+
     public static void initItems(IRegistrationProvider registrationProvider){
         WARM_CHICKEN_SPAWN_EGG = registrationProvider.registerItem(
                 "warm_chicken_spawn_egg",
@@ -20,6 +24,15 @@ public class STLItems {
         COLD_CHICKEN_SPAWN_EGG = registrationProvider.registerItem(
                 "cold_chicken_spawn_egg",
                 () -> new SpawnEggItem(STLEntityTypes.COLD_CHICKEN.get(), 0xADACAC, 0x696969, new Item.Properties())
+        );
+
+        BLUE_EGG = registrationProvider.registerItem(
+                "blue_egg",
+                () -> new EggItem(new Item.Properties().stacksTo(16))
+        );
+        BROWN_EGG = registrationProvider.registerItem(
+                "brown_egg",
+                () -> new EggItem(new Item.Properties().stacksTo(16))
         );
     }
 
