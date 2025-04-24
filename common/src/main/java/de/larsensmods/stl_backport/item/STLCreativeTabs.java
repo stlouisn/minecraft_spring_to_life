@@ -1,0 +1,24 @@
+package de.larsensmods.stl_backport.item;
+
+import de.larsensmods.regutil.IRegistrationProvider;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.function.Supplier;
+
+public class STLCreativeTabs {
+
+    public static Supplier<CreativeModeTab> SPRING_TO_LIFE_TAB;
+
+    public static void initCreativeTabs(IRegistrationProvider provider) {
+        SPRING_TO_LIFE_TAB = provider.registerCreativeTab("spring_to_life_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+                .title(Component.translatable("itemGroup.spring_to_life"))
+                .icon(() -> new ItemStack(STLItems.COLD_CHICKEN_SPAWN_EGG.get()))
+                .displayItems((displayParameters, output) -> {
+                    output.accept(STLItems.WARM_CHICKEN_SPAWN_EGG.get());
+                    output.accept(STLItems.COLD_CHICKEN_SPAWN_EGG.get());
+                }));
+    }
+
+}

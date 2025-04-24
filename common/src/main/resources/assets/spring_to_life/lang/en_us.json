@@ -1,4 +1,9 @@
 {
   "entity.spring_to_life.warm_chicken": "Warm Chicken",
-  "entity.spring_to_life.cold_chicken": "Cold Chicken"
+  "entity.spring_to_life.cold_chicken": "Cold Chicken",
+
+  "item.spring_to_life.warm_chicken_spawn_egg": "Warm Chicken Spawn Egg",
+  "item.spring_to_life.cold_chicken_spawn_egg": "Cold Chicken Spawn Egg",
+
+  "itemGroup.spring_to_life": "Spring to Life"
 }
