@@ -11,7 +11,7 @@ The Spring to Life Backport mod is a Fabric and NeoForge mod trying to bring bac
     - [X] Model & Texture
     - [X] Breeding & Egg Laying Behaviour
     - [ ] Spawning
-    - [ ] Drops
+    - [X] Drops
 
 ### Down the Line:
 - New Pig Variants
