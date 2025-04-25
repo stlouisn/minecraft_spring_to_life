@@ -1,12 +1,15 @@
 package de.larsensmods.stl_backport.entity;
 
+import de.larsensmods.stl_backport.item.STLItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class WarmChicken extends Chicken {
@@ -19,6 +22,23 @@ public class WarmChicken extends Chicken {
         super.registerGoals();
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0, ColdChicken.class));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0, Chicken.class));
+    }
+
+    @Override
+    public void aiStep() {
+        boolean layEgg = false;
+        if (--this.eggTime <= 0 && !this.level().isClientSide && this.isAlive() && !this.isBaby() && !this.isChickenJockey()) {
+            layEgg = true;
+            this.eggTime = this.random.nextInt(6000) + 6001;
+        }else{
+            this.eggTime++;
+        }
+        super.aiStep();
+        if(layEgg){
+            this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            this.spawnAtLocation(STLItems.BROWN_EGG.get());
+            this.gameEvent(GameEvent.ENTITY_PLACE);
+        }
     }
 
     @Override
