@@ -2,7 +2,6 @@ package de.larsensmods.stl_backport.item;
 
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
-import net.minecraft.world.item.EggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 
@@ -28,11 +27,11 @@ public class STLItems {
 
         BLUE_EGG = registrationProvider.registerItem(
                 "blue_egg",
-                () -> new EggItem(new Item.Properties().stacksTo(16))
+                () -> new STLEggItem(new Item.Properties().stacksTo(16))
         );
         BROWN_EGG = registrationProvider.registerItem(
                 "brown_egg",
-                () -> new EggItem(new Item.Properties().stacksTo(16))
+                () -> new STLEggItem(new Item.Properties().stacksTo(16))
         );
     }
 
