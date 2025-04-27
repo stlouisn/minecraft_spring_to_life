@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport.entity;
 
 import de.larsensmods.stl_backport.item.STLItems;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.AgeableMob;
@@ -9,6 +10,7 @@ import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -61,5 +63,9 @@ public class WarmChicken extends Chicken {
         }else{
             return Math.random() < 0.5 ? STLEntityTypes.WARM_CHICKEN.get().create(level) : EntityType.CHICKEN.create(level);
         }
+    }
+
+    public static boolean isValidBiome(Holder<Biome> biome) {
+        return false;
     }
 }

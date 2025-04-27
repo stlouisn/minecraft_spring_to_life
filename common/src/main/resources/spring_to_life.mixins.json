@@ -6,9 +6,10 @@
   "client": [
   ],
   "mixins": [
-    "MobMixin",
     "AnimalMixin",
-    "ChickenMixin"
+    "ChickenMixin",
+    "MobMixin",
+    "ZombieMixin"
   ],
   "injectors": {
     "defaultRequire": 1
