@@ -9,6 +9,7 @@
     "AnimalMixin",
     "ChickenMixin",
     "MobMixin",
+    "SpawnPlacementsMixin",
     "ZombieMixin"
   ],
   "injectors": {

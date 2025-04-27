@@ -4,14 +4,10 @@ The Spring to Life Backport mod is a Fabric and NeoForge mod trying to bring bac
 
 ## Current Feature List
 ### Completed Features:
+- New Chicken Variants (Warm & Cold Chicken)
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
 ### In Development:
-- New Chicken Variants (Warm & Cold Chicken)
-    - [X] Model & Texture
-    - [X] Breeding & Egg Laying Behaviour
-    - [ ] Spawning
-    - [X] Drops
 
 ### Down the Line:
 - New Pig Variants
