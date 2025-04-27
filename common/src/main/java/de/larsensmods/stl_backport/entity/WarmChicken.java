@@ -2,6 +2,7 @@ package de.larsensmods.stl_backport.entity;
 
 import de.larsensmods.stl_backport.item.STLItems;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.AgeableMob;
@@ -11,10 +12,17 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WarmChicken extends Chicken {
+
+    private static final Set<ResourceKey<Biome>> WARM_CHICKEN_BIOMES = new HashSet<>();
+
     public WarmChicken(EntityType<? extends Chicken> entityType, Level level) {
         super(entityType, level);
     }
@@ -66,6 +74,38 @@ public class WarmChicken extends Chicken {
     }
 
     public static boolean isValidBiome(Holder<Biome> biome) {
+        for (ResourceKey<Biome> key : WARM_CHICKEN_BIOMES) {
+            if (biome.is(key)) {
+                return true;
+            }
+        }
         return false;
+    }
+
+    static {
+        //NATURAL
+        WARM_CHICKEN_BIOMES.add(Biomes.SAVANNA);
+        WARM_CHICKEN_BIOMES.add(Biomes.SAVANNA_PLATEAU);
+        WARM_CHICKEN_BIOMES.add(Biomes.WINDSWEPT_SAVANNA);
+        WARM_CHICKEN_BIOMES.add(Biomes.JUNGLE);
+        WARM_CHICKEN_BIOMES.add(Biomes.BAMBOO_JUNGLE);
+        WARM_CHICKEN_BIOMES.add(Biomes.SPARSE_JUNGLE);
+        WARM_CHICKEN_BIOMES.add(Biomes.BADLANDS);
+        WARM_CHICKEN_BIOMES.add(Biomes.ERODED_BADLANDS);
+        WARM_CHICKEN_BIOMES.add(Biomes.WOODED_BADLANDS);
+
+        //JOCKEY SPAWNS ONLY
+        WARM_CHICKEN_BIOMES.add(Biomes.WARM_OCEAN);
+        WARM_CHICKEN_BIOMES.add(Biomes.LUKEWARM_OCEAN);
+        WARM_CHICKEN_BIOMES.add(Biomes.DEEP_LUKEWARM_OCEAN);
+        WARM_CHICKEN_BIOMES.add(Biomes.MANGROVE_SWAMP);
+        WARM_CHICKEN_BIOMES.add(Biomes.DESERT);
+
+        //THE NETHER
+        WARM_CHICKEN_BIOMES.add(Biomes.NETHER_WASTES);
+        WARM_CHICKEN_BIOMES.add(Biomes.CRIMSON_FOREST);
+        WARM_CHICKEN_BIOMES.add(Biomes.WARPED_FOREST);
+        WARM_CHICKEN_BIOMES.add(Biomes.SOUL_SAND_VALLEY);
+        WARM_CHICKEN_BIOMES.add(Biomes.BASALT_DELTAS);
     }
 }
