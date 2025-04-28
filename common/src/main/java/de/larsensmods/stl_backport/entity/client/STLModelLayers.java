@@ -12,4 +12,7 @@ public class STLModelLayers {
     public static final ModelLayerLocation WARM_PIG = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "warm_pig"), "main");
     public static final ModelLayerLocation COLD_PIG = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "cold_pig"), "main");
 
+    public static final ModelLayerLocation WARM_COW = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "warm_cow"), "main");
+    public static final ModelLayerLocation COLD_COW = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "cold_cow"), "main");
+
 }

@@ -9,6 +9,7 @@ newer versions.
 ### Completed Features:
 
 - New Chicken Variants (Warm & Cold Chicken)
+- New Cow Variants (Warm & Cold Cow)
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
 ### In Development:
@@ -20,9 +21,3 @@ newer versions.
     - [X] Drops
 
 ### Down the Line:
-
-- New Cow Variants
-    - [ ] Model & Texture
-    - [ ] Breeding Behaviour
-    - [ ] Spawning
-    - [ ] Drops

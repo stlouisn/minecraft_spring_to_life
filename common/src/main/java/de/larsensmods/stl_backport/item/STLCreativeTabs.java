@@ -14,12 +14,14 @@ public class STLCreativeTabs {
     public static void initCreativeTabs(IRegistrationProvider provider) {
         SPRING_TO_LIFE_TAB = provider.registerCreativeTab("spring_to_life_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
                 .title(Component.translatable("itemGroup.spring_to_life"))
-                .icon(() -> new ItemStack(STLItems.COLD_CHICKEN_SPAWN_EGG.get()))
+                .icon(() -> new ItemStack(STLItems.BROWN_EGG.get()))
                 .displayItems((displayParameters, output) -> {
                     output.accept(STLItems.WARM_CHICKEN_SPAWN_EGG.get());
                     output.accept(STLItems.COLD_CHICKEN_SPAWN_EGG.get());
                     output.accept(STLItems.WARM_PIG_SPAWN_EGG.get());
                     output.accept(STLItems.COLD_PIG_SPAWN_EGG.get());
+                    output.accept(STLItems.WARM_COW_SPAWN_EGG.get());
+                    output.accept(STLItems.COLD_COW_SPAWN_EGG.get());
 
                     output.accept(STLItems.BLUE_EGG.get());
                     output.accept(STLItems.BROWN_EGG.get());

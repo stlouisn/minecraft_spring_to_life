@@ -15,6 +15,8 @@ public class ModEventBusEvents {
         event.put(STLEntityTypes.COLD_CHICKEN.get(), ColdChicken.createAttributes().build());
         event.put(STLEntityTypes.WARM_PIG.get(), WarmPig.createAttributes().build());
         event.put(STLEntityTypes.COLD_PIG.get(), ColdPig.createAttributes().build());
+        event.put(STLEntityTypes.WARM_COW.get(), WarmCow.createAttributes().build());
+        event.put(STLEntityTypes.COLD_COW.get(), ColdCow.createAttributes().build());
     }
 
 }

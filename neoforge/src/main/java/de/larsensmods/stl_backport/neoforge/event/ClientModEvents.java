@@ -20,6 +20,8 @@ public class ClientModEvents {
         EntityRenderers.register(STLEntityTypes.COLD_CHICKEN.get(), ColdChickenRenderer::new);
         EntityRenderers.register(STLEntityTypes.WARM_PIG.get(), WarmPigRenderer::new);
         EntityRenderers.register(STLEntityTypes.COLD_PIG.get(), ColdPigRenderer::new);
+        EntityRenderers.register(STLEntityTypes.WARM_COW.get(), WarmCowRenderer::new);
+        EntityRenderers.register(STLEntityTypes.COLD_COW.get(), ColdCowRenderer::new);
     }
 
     @SubscribeEvent
@@ -28,6 +30,8 @@ public class ClientModEvents {
         event.registerLayerDefinition(STLModelLayers.COLD_CHICKEN, ColdChickenModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.WARM_PIG, () -> WarmPigModel.createBodyLayer(CubeDeformation.NONE));
         event.registerLayerDefinition(STLModelLayers.COLD_PIG, () -> ColdPigModel.createBodyLayer(CubeDeformation.NONE));
+        event.registerLayerDefinition(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
+        event.registerLayerDefinition(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
     }
 
 }

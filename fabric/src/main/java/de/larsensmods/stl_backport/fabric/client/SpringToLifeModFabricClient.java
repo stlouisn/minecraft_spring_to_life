@@ -16,10 +16,14 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(STLEntityTypes.COLD_CHICKEN.get(), ColdChickenRenderer::new);
         EntityRendererRegistry.register(STLEntityTypes.WARM_PIG.get(), WarmPigRenderer::new);
         EntityRendererRegistry.register(STLEntityTypes.COLD_PIG.get(), ColdPigRenderer::new);
+        EntityRendererRegistry.register(STLEntityTypes.WARM_COW.get(), WarmCowRenderer::new);
+        EntityRendererRegistry.register(STLEntityTypes.COLD_COW.get(), ColdCowRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_CHICKEN, WarmChickenModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_CHICKEN, ColdChickenModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_PIG, ()-> WarmPigModel.createBodyLayer(CubeDeformation.NONE));
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_PIG, ()-> ColdPigModel.createBodyLayer(CubeDeformation.NONE));
+        EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
     }
 }

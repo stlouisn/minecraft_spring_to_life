@@ -3,6 +3,7 @@ package de.larsensmods.stl_backport.entity;
 import de.larsensmods.regutil.IRegistrationProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Supplier;
@@ -14,6 +15,9 @@ public abstract class STLEntityTypes {
 
     public static Supplier<EntityType<WarmPig>> WARM_PIG;
     public static Supplier<EntityType<ColdPig>> COLD_PIG;
+
+    public static Supplier<EntityType<WarmCow>> WARM_COW;
+    public static Supplier<EntityType<ColdCow>> COLD_COW;
 
     public static void initEntityTypes(IRegistrationProvider registrationProvider){
         WARM_CHICKEN = registrationProvider.registerEntityType(
@@ -40,6 +44,15 @@ public abstract class STLEntityTypes {
         COLD_PIG = registrationProvider.registerEntityType(
                 "cold_pig",
                 () -> EntityType.Builder.of(ColdPig::new, MobCategory.CREATURE).sized(0.9F, 0.9F).passengerAttachments(0.86875F).clientTrackingRange(10)
+        );
+
+        WARM_COW = registrationProvider.registerEntityType(
+                "warm_cow",
+                () -> EntityType.Builder.of(WarmCow::new, MobCategory.CREATURE).sized(0.9F, 1.4F).eyeHeight(1.3F).passengerAttachments(1.36875F).clientTrackingRange(10)
+        );
+        COLD_COW = registrationProvider.registerEntityType(
+                "cold_cow",
+                () -> EntityType.Builder.of(ColdCow::new, MobCategory.CREATURE).sized(0.9F, 1.4F).eyeHeight(1.3F).passengerAttachments(1.36875F).clientTrackingRange(10)
         );
     }
 

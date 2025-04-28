@@ -13,6 +13,8 @@ public class STLItems {
     public static Supplier<Item> COLD_CHICKEN_SPAWN_EGG;
     public static Supplier<Item> WARM_PIG_SPAWN_EGG;
     public static Supplier<Item> COLD_PIG_SPAWN_EGG;
+    public static Supplier<Item> WARM_COW_SPAWN_EGG;
+    public static Supplier<Item> COLD_COW_SPAWN_EGG;
 
     public static Supplier<Item> BLUE_EGG;
     public static Supplier<Item> BROWN_EGG;
@@ -33,6 +35,14 @@ public class STLItems {
         COLD_PIG_SPAWN_EGG = registrationProvider.registerItem(
                 "cold_pig_spawn_egg",
                 () -> new SpawnEggItem(STLEntityTypes.COLD_PIG.get(), 0xD8C17C, 0xF1D0AC, new Item.Properties())
+        );
+        WARM_COW_SPAWN_EGG = registrationProvider.registerItem(
+                "warm_cow_spawn_egg",
+                () -> new SpawnEggItem(STLEntityTypes.WARM_COW.get(), 0x994122, 0xBE826C, new Item.Properties())
+        );
+        COLD_COW_SPAWN_EGG = registrationProvider.registerItem(
+                "cold_cow_spawn_egg",
+                () -> new SpawnEggItem(STLEntityTypes.COLD_COW.get(), 0xBE7A31, 0xE3BA71, new Item.Properties())
         );
 
         BLUE_EGG = registrationProvider.registerItem(
