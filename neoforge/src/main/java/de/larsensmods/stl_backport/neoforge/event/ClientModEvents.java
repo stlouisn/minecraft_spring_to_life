@@ -29,7 +29,7 @@ public class ClientModEvents {
         event.registerLayerDefinition(STLModelLayers.WARM_CHICKEN, WarmChickenModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.COLD_CHICKEN, ColdChickenModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.WARM_PIG, () -> WarmPigModel.createBodyLayer(CubeDeformation.NONE));
-        event.registerLayerDefinition(STLModelLayers.COLD_PIG, () -> ColdPigModel.createBodyLayer(CubeDeformation.NONE));
+        event.registerLayerDefinition(STLModelLayers.COLD_PIG, ColdPigModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
     }

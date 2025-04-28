@@ -10,14 +10,16 @@ newer versions.
 
 - New Chicken Variants (Warm & Cold Chicken)
 - New Cow Variants (Warm & Cold Cow)
+- New Pig Variants (Warm & Cold Pig)
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
 ### In Development:
 
-- New Pig Variants
-    - [ ] Model & Texture
-    - [X] Breeding Behaviour
-    - [X] Spawning
-    - [X] Drops
-
 ### Down the Line:
+- Bush
+- Firefly Bush
+- Cactus Flower
+- Leaf Litter
+- Wildflowers
+- Short Dry Grass
+- Tall Dry Grass
