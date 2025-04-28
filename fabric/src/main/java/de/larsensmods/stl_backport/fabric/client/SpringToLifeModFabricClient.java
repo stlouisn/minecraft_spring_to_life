@@ -5,6 +5,7 @@ import de.larsensmods.stl_backport.entity.client.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 
 public final class SpringToLifeModFabricClient implements ClientModInitializer {
 
@@ -13,8 +14,12 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
         EntityRendererRegistry.register(STLEntityTypes.WARM_CHICKEN.get(), WarmChickenRenderer::new);
         EntityRendererRegistry.register(STLEntityTypes.COLD_CHICKEN.get(), ColdChickenRenderer::new);
+        EntityRendererRegistry.register(STLEntityTypes.WARM_PIG.get(), WarmPigRenderer::new);
+        EntityRendererRegistry.register(STLEntityTypes.COLD_PIG.get(), ColdPigRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_CHICKEN, WarmChickenModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_CHICKEN, ColdChickenModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_PIG, ()-> WarmPigModel.createBodyLayer(CubeDeformation.NONE));
+        EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_PIG, ()-> ColdPigModel.createBodyLayer(CubeDeformation.NONE));
     }
 }

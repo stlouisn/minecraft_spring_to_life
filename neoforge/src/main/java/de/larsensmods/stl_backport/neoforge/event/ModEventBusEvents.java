@@ -1,9 +1,7 @@
 package de.larsensmods.stl_backport.neoforge.event;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
-import de.larsensmods.stl_backport.entity.ColdChicken;
-import de.larsensmods.stl_backport.entity.STLEntityTypes;
-import de.larsensmods.stl_backport.entity.WarmChicken;
+import de.larsensmods.stl_backport.entity.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -15,6 +13,8 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(STLEntityTypes.WARM_CHICKEN.get(), WarmChicken.createAttributes().build());
         event.put(STLEntityTypes.COLD_CHICKEN.get(), ColdChicken.createAttributes().build());
+        event.put(STLEntityTypes.WARM_PIG.get(), WarmPig.createAttributes().build());
+        event.put(STLEntityTypes.COLD_PIG.get(), ColdPig.createAttributes().build());
     }
 
 }

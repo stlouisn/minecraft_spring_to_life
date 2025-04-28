@@ -12,6 +12,9 @@ public abstract class STLEntityTypes {
     public static Supplier<EntityType<WarmChicken>> WARM_CHICKEN;
     public static Supplier<EntityType<ColdChicken>> COLD_CHICKEN;
 
+    public static Supplier<EntityType<WarmPig>> WARM_PIG;
+    public static Supplier<EntityType<ColdPig>> COLD_PIG;
+
     public static void initEntityTypes(IRegistrationProvider registrationProvider){
         WARM_CHICKEN = registrationProvider.registerEntityType(
                 "warm_chicken",
@@ -28,6 +31,15 @@ public abstract class STLEntityTypes {
                         .eyeHeight(0.644F)
                         .passengerAttachments(new Vec3(0.0, 0.7, -0.1))
                         .clientTrackingRange(10)
+        );
+
+        WARM_PIG = registrationProvider.registerEntityType(
+                "warm_pig",
+                () -> EntityType.Builder.of(WarmPig::new, MobCategory.CREATURE).sized(0.9F, 0.9F).passengerAttachments(0.86875F).clientTrackingRange(10)
+        );
+        COLD_PIG = registrationProvider.registerEntityType(
+                "cold_pig",
+                () -> EntityType.Builder.of(ColdPig::new, MobCategory.CREATURE).sized(0.9F, 0.9F).passengerAttachments(0.86875F).clientTrackingRange(10)
         );
     }
 

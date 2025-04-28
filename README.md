@@ -15,9 +15,9 @@ newer versions.
 
 - New Pig Variants
     - [ ] Model & Texture
-    - [ ] Breeding Behaviour
-    - [ ] Spawning
-    - [ ] Drops
+    - [X] Breeding Behaviour
+    - [X] Spawning
+    - [X] Drops
 
 ### Down the Line:
 

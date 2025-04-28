@@ -18,6 +18,8 @@ public class STLCreativeTabs {
                 .displayItems((displayParameters, output) -> {
                     output.accept(STLItems.WARM_CHICKEN_SPAWN_EGG.get());
                     output.accept(STLItems.COLD_CHICKEN_SPAWN_EGG.get());
+                    output.accept(STLItems.WARM_PIG_SPAWN_EGG.get());
+                    output.accept(STLItems.COLD_PIG_SPAWN_EGG.get());
 
                     output.accept(STLItems.BLUE_EGG.get());
                     output.accept(STLItems.BROWN_EGG.get());

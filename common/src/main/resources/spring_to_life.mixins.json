@@ -9,6 +9,7 @@
     "AnimalMixin",
     "ChickenMixin",
     "MobMixin",
+    "PigMixin",
     "SpawnPlacementsMixin",
     "ZombieMixin"
   ],
