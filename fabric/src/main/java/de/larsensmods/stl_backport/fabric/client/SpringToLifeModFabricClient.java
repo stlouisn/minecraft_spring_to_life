@@ -1,11 +1,18 @@
 package de.larsensmods.stl_backport.fabric.client;
 
+import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.client.*;
+import de.larsensmods.stl_backport.item.STLItems;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.GrassColor;
 
 public final class SpringToLifeModFabricClient implements ClientModInitializer {
 
@@ -25,5 +32,15 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_PIG, ColdPigModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
+        ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
+                        ? BiomeColors.getAverageGrassColor(level, pos)
+                        : GrassColor.getDefaultColor(),
+
+                STLBlocks.BUSH.get());
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
+
+                STLItems.BUSH.get());
     }
 }

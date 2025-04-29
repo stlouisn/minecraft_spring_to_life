@@ -8,6 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,8 +21,8 @@ import java.util.Optional;
 
 public class STLBushBlock extends BushBlock implements BonemealableBlock {
 
-    public static final MapCodec<BushBlock> CODEC = simpleCodec(STLBushBlock::new);
-    private static final VoxelShape SHAPE = box(8.0 - 16.0 / 2.0, 0.0, 8.0 - 16.0 / 2.0, 8.0 + 16.0 / 2.0, 13.0, 8.0 + 16.0 / 2.0);
+    public static final MapCodec<STLBushBlock> CODEC = simpleCodec(STLBushBlock::new);
+    private static final VoxelShape SHAPE = Block.box(8.0 - 16.0 / 2.0, 0.0, 8.0 - 16.0 / 2.0, 8.0 + 16.0 / 2.0, 13.0, 8.0 + 16.0 / 2.0);
 
     protected STLBushBlock(Properties properties) {
         super(properties);

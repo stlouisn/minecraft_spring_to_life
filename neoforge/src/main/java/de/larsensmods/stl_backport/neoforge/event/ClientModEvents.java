@@ -1,15 +1,25 @@
 package de.larsensmods.stl_backport.neoforge.event;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.client.*;
+import de.larsensmods.stl_backport.item.STLItems;
+import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import org.jetbrains.annotations.Nullable;
 
 @EventBusSubscriber(modid = SpringToLifeMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
@@ -32,6 +42,22 @@ public class ClientModEvents {
         event.registerLayerDefinition(STLModelLayers.COLD_PIG, ColdPigModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
         event.registerLayerDefinition(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
+        event.register((state, level, pos, tintIndex) -> level != null && pos != null
+                ? BiomeColors.getAverageGrassColor(level, pos)
+                : GrassColor.getDefaultColor(),
+
+                STLBlocks.BUSH.get());
+    }
+
+    @SubscribeEvent
+    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
+
+                STLItems.BUSH.get());
     }
 
 }
