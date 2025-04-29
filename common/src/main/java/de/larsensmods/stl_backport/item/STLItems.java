@@ -1,14 +1,18 @@
 package de.larsensmods.stl_backport.item;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
 public class STLItems {
 
+    //SPAWN EGGS
     public static Supplier<Item> WARM_CHICKEN_SPAWN_EGG;
     public static Supplier<Item> COLD_CHICKEN_SPAWN_EGG;
     public static Supplier<Item> WARM_PIG_SPAWN_EGG;
@@ -16,8 +20,12 @@ public class STLItems {
     public static Supplier<Item> WARM_COW_SPAWN_EGG;
     public static Supplier<Item> COLD_COW_SPAWN_EGG;
 
+    //ITEMS
     public static Supplier<Item> BLUE_EGG;
     public static Supplier<Item> BROWN_EGG;
+
+    //BLOCK ITEMS
+    public static Supplier<Item> BUSH;
 
     public static void initItems(IRegistrationProvider registrationProvider){
         WARM_CHICKEN_SPAWN_EGG = registrationProvider.registerItem(
@@ -53,6 +61,17 @@ public class STLItems {
                 "brown_egg",
                 () -> new STLEggItem(new Item.Properties().stacksTo(16))
         );
+
+        BUSH = registerBlockItem(
+                registrationProvider,
+                "bush",
+                STLBlocks.BUSH,
+                new Item.Properties()
+        );
+    }
+
+    private static Supplier<Item> registerBlockItem(IRegistrationProvider provider, String key, Supplier<Block> block, Item.Properties properties){
+        return provider.registerItem(key, () -> new BlockItem(block.get(), properties));
     }
 
 }

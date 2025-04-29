@@ -25,6 +25,8 @@ public class STLCreativeTabs {
 
                     output.accept(STLItems.BLUE_EGG.get());
                     output.accept(STLItems.BROWN_EGG.get());
+
+                    output.accept(STLItems.BUSH.get());
                 }));
     }
 

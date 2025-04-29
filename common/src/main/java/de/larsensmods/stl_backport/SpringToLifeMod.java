@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.item.STLCreativeTabs;
 import de.larsensmods.stl_backport.item.STLItems;
@@ -17,6 +18,7 @@ public final class SpringToLifeMod {
         LOGGER.info("SpringToLifeMod common init");
 
         STLEntityTypes.initEntityTypes(regProvider);
+        STLBlocks.initBlocks(regProvider);
         STLItems.initItems(regProvider);
         STLCreativeTabs.initCreativeTabs(regProvider);
 

@@ -14,9 +14,9 @@ newer versions.
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
 ### In Development:
+- Bush
 
 ### Down the Line:
-- Bush
 - Firefly Bush
 - Cactus Flower
 - Leaf Litter
