@@ -12,10 +12,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class NeoForgeRegistrationProvider implements IRegistrationProvider {
+
+    private final Map<String, Object> overrideKeys = new HashMap<>();
 
     private static final DeferredRegister<CreativeModeTab> TAB_REGISTER = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, SpringToLifeMod.MOD_ID);
     private static final DeferredRegister<EntityType<?>> ENTITY_TYPE_REGISTER = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, SpringToLifeMod.MOD_ID);
@@ -29,8 +33,17 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
         BLOCK_REGISTER.register(bus);
     }
 
+    public void addOverrideKey(String key, Object value) {
+        overrideKeys.put(key, value);
+    }
+
+    @SuppressWarnings("unchecked")
     @Override
     public Supplier<Block> registerBlock(String key, Function<BlockBehaviour.Properties, Block> constructor, BlockBehaviour.Properties properties) {
+        if(overrideKeys.containsKey("block:" + key) && overrideKeys.get("block:" + key) instanceof Function<?, ?> function) {
+            SpringToLifeMod.LOGGER.info("Overriding Block {}", key);
+            return BLOCK_REGISTER.register(key, () -> ((Function<BlockBehaviour.Properties, Block>) function).apply(properties));
+        }
         return BLOCK_REGISTER.register(key, () -> constructor.apply(properties));
     }
 
