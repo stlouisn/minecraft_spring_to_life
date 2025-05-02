@@ -4,22 +4,28 @@ The Spring to Life Backport mod is a Fabric and NeoForge mod trying to bring bac
 drop "Spring to Life" to Minecraft 1.21.1 to allow the features to be used in modpacks relying on mods nod available for
 newer versions.
 
-## Current Feature List
+## Feature List
 
 ### Completed Features:
 
+#### Entities:
 - New Chicken Variants (Warm & Cold Chicken)
 - New Cow Variants (Warm & Cold Cow)
 - New Pig Variants (Warm & Cold Pig)
+
+#### Items:
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
-### In Development:
-- Bush
+#### Blocks:
+- Bush (including world generation)
 
+### In Development:
+- Short Dry Grass
+- Tall Dry Grass
+- 
 ### Down the Line:
 - Firefly Bush
 - Cactus Flower
 - Leaf Litter
 - Wildflowers
-- Short Dry Grass
-- Tall Dry Grass
+- Fallen trees
