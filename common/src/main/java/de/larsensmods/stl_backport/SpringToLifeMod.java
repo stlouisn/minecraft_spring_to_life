@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.audio.STLSoundEvents;
 import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.item.STLCreativeTabs;
@@ -21,6 +22,8 @@ public final class SpringToLifeMod {
         STLBlocks.initBlocks(regProvider);
         STLItems.initItems(regProvider);
         STLCreativeTabs.initCreativeTabs(regProvider);
+
+        STLSoundEvents.initSounds(regProvider);
 
         LOGGER.info("SpringToLifeMod end common init");
     }

@@ -5,6 +5,8 @@ import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -37,6 +39,12 @@ public class FabricRegistrationProvider implements IRegistrationProvider {
     public Supplier<Item> registerItem(String key, Supplier<Item> item) {
         Item regItem = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), item.get());
         return () -> regItem;
+    }
+
+    @Override
+    public Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent) {
+        SoundEvent regSoundEvent = Registry.register(BuiltInRegistries.SOUND_EVENT, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), soundEvent.get());
+        return () -> regSoundEvent;
     }
 
 }

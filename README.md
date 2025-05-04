@@ -29,3 +29,6 @@ newer versions.
 - Leaf Litter
 - Wildflowers
 - Fallen trees
+
+## Attributions
+Field ambience 01.wav by szelestamas -- https://freesound.org/s/620099/ -- License: Creative Commons 0

@@ -20,5 +20,7 @@
   "block.spring_to_life.short_dry_grass": "Short Dry Grass",
   "block.spring_to_life.tall_dry_grass": "Tall Dry Grass",
 
-  "itemGroup.spring_to_life": "Spring to Life"
+  "itemGroup.spring_to_life": "Spring to Life",
+
+  "subtitles.block.dry_grass.ambient": "Dry Grass Wind"
 }

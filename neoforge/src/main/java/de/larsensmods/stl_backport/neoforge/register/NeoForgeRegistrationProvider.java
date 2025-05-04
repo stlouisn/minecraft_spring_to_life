@@ -3,6 +3,7 @@ package de.larsensmods.stl_backport.neoforge.register;
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -25,12 +26,14 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     private static final DeferredRegister<EntityType<?>> ENTITY_TYPE_REGISTER = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, SpringToLifeMod.MOD_ID);
     private static final DeferredRegister<Item> ITEM_REGISTER = DeferredRegister.create(BuiltInRegistries.ITEM, SpringToLifeMod.MOD_ID);
     private static final DeferredRegister<Block> BLOCK_REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK, SpringToLifeMod.MOD_ID);
+    private static final DeferredRegister<SoundEvent> SOUND_REGISTER = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, SpringToLifeMod.MOD_ID);
 
     public void finishRegistration(IEventBus bus) {
         TAB_REGISTER.register(bus);
         ENTITY_TYPE_REGISTER.register(bus);
         ITEM_REGISTER.register(bus);
         BLOCK_REGISTER.register(bus);
+        SOUND_REGISTER.register(bus);
     }
 
     public void addOverrideKey(String key, Object value) {
@@ -58,6 +61,11 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
 
     public Supplier<Item> registerItem(String key, Supplier<Item> item) {
         return ITEM_REGISTER.register(key, item);
+    }
+
+    @Override
+    public Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent) {
+        return SOUND_REGISTER.register(key, soundEvent);
     }
 
 }

@@ -1,8 +1,18 @@
 package de.larsensmods.stl_backport.block;
 
 import com.mojang.serialization.MapCodec;
+import de.larsensmods.stl_backport.SpringToLifeMod;
+import de.larsensmods.stl_backport.audio.STLSoundEvents;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.resources.sounds.EntityBoundSoundInstance;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,6 +32,20 @@ public class STLShortDryGrassBlock extends STLDryVegetationBlock implements Bone
 
     protected STLShortDryGrassBlock(BlockBehaviour.Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextInt(200) == 0){
+            if(
+                    level.getBlockState(pos.below()).is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "desert_dry_vegetation_sound_trigger"))) &&
+                            level.getBlockState(pos.below().below()).is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "desert_dry_vegetation_sound_trigger"))))
+            {
+                if (level.isClientSide() && Minecraft.getInstance().player != null) {
+                    Minecraft.getInstance().getSoundManager().play(new EntityBoundSoundInstance(STLSoundEvents.DRY_GRASS.get(), SoundSource.AMBIENT, 1.0F, 1.0F, Minecraft.getInstance().player, random.nextLong()));
+                }
+            }
+        }
     }
 
     @Override
