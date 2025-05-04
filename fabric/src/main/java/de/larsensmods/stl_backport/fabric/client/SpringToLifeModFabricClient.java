@@ -40,10 +40,8 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
                         ? BiomeColors.getAverageGrassColor(level, pos)
                         : GrassColor.getDefaultColor(),
-
                 STLBlocks.BUSH.get());
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
-
                 STLItems.BUSH.get());
     }
 }
