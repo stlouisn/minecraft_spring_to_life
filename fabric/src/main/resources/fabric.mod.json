@@ -9,10 +9,10 @@
   ],
   "contact": {
     "homepage": "https://larsensmods.de/",
-    "sources": "https://github.com/Larsens-Mods/"
+    "sources": "https://github.com/MC-Backports/spring_to_life"
   },
-  "license": "none",
-  "icon": "assets/spring_to_life/icon.png",
+  "license": "GPL-3.0",
+  "icon": "assets/spring_to_life/logo.png",
   "environment": "*",
   "entrypoints": {
     "main": [

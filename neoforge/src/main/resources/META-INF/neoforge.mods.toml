@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
-license = "none"
+issueTrackerURL = "https://github.com/MC-Backports/spring_to_life/issues"
+license = "GPL-3.0"
 
 [[mods]]
 modId = "spring_to_life"
@@ -11,7 +11,7 @@ authors = "LarsenR"
 description = '''
 This mod ports some features from the "Spring to Life" feature drop (Minecraft 1.21.5) back to 1.21.1
 '''
-#logoFile = ""
+logoFile = "assets/spring_to_life/logo.png"
 
 [[dependencies.spring_to_life]]
 modId = "neoforge"
