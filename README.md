@@ -17,15 +17,15 @@ newer versions.
 - New Egg Variants (Blue Egg, Brown Egg) with recipes, obtaining and usage
 
 #### Blocks:
-- Bush (including world generation)
-
-### In Development:
+- Bush
 - Short Dry Grass
 - Tall Dry Grass
-- 
+
+### In Development:
+- Cactus Flower
+
 ### Down the Line:
 - Firefly Bush
-- Cactus Flower
 - Leaf Litter
 - Wildflowers
 - Fallen trees
