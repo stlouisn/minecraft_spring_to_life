@@ -16,6 +16,8 @@ public class STLBlocks {
     public static Supplier<Block> SHORT_DRY_GRASS;
     public static Supplier<Block> TALL_DRY_GRASS;
 
+    public static Supplier<Block> CACTUS_FLOWER;
+
     public static void initBlocks(IRegistrationProvider provider) {
         BUSH = provider.registerBlock(
                 "bush",
@@ -27,7 +29,8 @@ public class STLBlocks {
                         .instabreak()
                         .sound(SoundType.GRASS)
                         .ignitedByLava()
-                        .pushReaction(PushReaction.DESTROY));
+                        .pushReaction(PushReaction.DESTROY)
+        );
 
         SHORT_DRY_GRASS = provider.registerBlock(
                 "short_dry_grass",
@@ -54,6 +57,18 @@ public class STLBlocks {
                         .sound(SoundType.GRASS)
                         .ignitedByLava()
                         .offsetType(BlockBehaviour.OffsetType.XYZ)
+                        .pushReaction(PushReaction.DESTROY)
+        );
+
+        CACTUS_FLOWER = provider.registerBlock(
+                "cactus_flower",
+                STLCactusFlowerBlock::new,
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.COLOR_PINK)
+                        .noCollission()
+                        .instabreak()
+                        .ignitedByLava()
+                        //TODO: .sound(SoundType.CACTUS_FLOWER)
                         .pushReaction(PushReaction.DESTROY)
         );
     }
