@@ -68,7 +68,7 @@ public class STLBlocks {
                         .noCollission()
                         .instabreak()
                         .ignitedByLava()
-                        //TODO: .sound(SoundType.CACTUS_FLOWER)
+                        .sound(SoundType.AZALEA)
                         .pushReaction(PushReaction.DESTROY)
         );
     }
