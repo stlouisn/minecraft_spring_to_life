@@ -36,6 +36,7 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.SHORT_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.TALL_DRY_GRASS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.CACTUS_FLOWER.get(), RenderType.cutout());
 
         ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
                         ? BiomeColors.getAverageGrassColor(level, pos)

@@ -28,6 +28,7 @@ public class STLItems {
     public static Supplier<Item> BUSH;
     public static Supplier<Item> SHORT_DRY_GRASS;
     public static Supplier<Item> TALL_DRY_GRASS;
+    public static Supplier<Item> CACTUS_FLOWER;
 
     public static void initItems(IRegistrationProvider registrationProvider){
         WARM_CHICKEN_SPAWN_EGG = registrationProvider.registerItem(
@@ -80,6 +81,12 @@ public class STLItems {
                 registrationProvider,
                 "tall_dry_grass",
                 STLBlocks.TALL_DRY_GRASS,
+                new Item.Properties()
+        );
+        CACTUS_FLOWER = registerBlockItem(
+                registrationProvider,
+                "cactus_flower",
+                STLBlocks.CACTUS_FLOWER,
                 new Item.Properties()
         );
     }

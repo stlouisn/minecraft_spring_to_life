@@ -20,9 +20,9 @@ newer versions.
 - Bush
 - Short Dry Grass
 - Tall Dry Grass
+- Cactus Flower
 
 ### In Development:
-- Cactus Flower
 
 ### Down the Line:
 - Firefly Bush
