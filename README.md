@@ -23,6 +23,7 @@ newer versions.
 - Cactus Flower
 
 ### In Development:
+- Leaves Particles
 
 ### Down the Line:
 - Firefly Bush
