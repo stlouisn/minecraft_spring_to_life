@@ -7,6 +7,7 @@ import de.larsensmods.stl_backport.entity.WarmChicken;
 import de.larsensmods.stl_backport.entity.WarmPig;
 import de.larsensmods.stl_backport.fabric.register.FabricRegistrationProvider;
 import de.larsensmods.stl_backport.item.STLItems;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
@@ -18,6 +19,7 @@ import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +43,7 @@ public final class SpringToLifeModFabric implements ModInitializer {
         FabricRegistrationProvider registrationProvider = new FabricRegistrationProvider();
 
         // Run our common setup.
-        SpringToLifeMod.init(registrationProvider);
+        SpringToLifeMod.init(registrationProvider, FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT));
 
         FabricDefaultAttributeRegistry.register(STLEntityTypes.WARM_CHICKEN.get(), WarmChicken.createAttributes());
         FabricDefaultAttributeRegistry.register(STLEntityTypes.COLD_CHICKEN.get(), ColdChicken.createAttributes());

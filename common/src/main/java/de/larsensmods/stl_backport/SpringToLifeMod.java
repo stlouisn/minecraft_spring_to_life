@@ -7,6 +7,9 @@ import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.item.STLCreativeTabs;
 import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
+import de.larsensmods.stl_backport.util.ClientColorUtils;
+import de.larsensmods.stl_backport.util.ColorUtils;
+import de.larsensmods.stl_backport.util.ServerColorUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +19,16 @@ public final class SpringToLifeMod {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(SpringToLifeMod.class);
 
-    public static void init(IRegistrationProvider regProvider) {
+    private static ColorUtils colorUtils;
+
+    public static void init(IRegistrationProvider regProvider, boolean isClient) {
         LOGGER.info("SpringToLifeMod common init");
+
+        if(isClient){
+            colorUtils = new ClientColorUtils();
+        }else{
+            colorUtils = new ServerColorUtils();
+        }
 
         STLEntityTypes.initEntityTypes(regProvider);
         STLBlocks.initBlocks(regProvider);
@@ -29,5 +40,9 @@ public final class SpringToLifeMod {
         STLSoundEvents.initSounds(regProvider);
 
         LOGGER.info("SpringToLifeMod end common init");
+    }
+
+    public static ColorUtils getColorUtils() {
+        return colorUtils;
     }
 }

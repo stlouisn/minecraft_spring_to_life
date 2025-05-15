@@ -1,7 +1,7 @@
 package de.larsensmods.stl_backport.mixin;
 
+import de.larsensmods.stl_backport.SpringToLifeMod;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.util.ParticleUtils;
@@ -34,7 +34,7 @@ public class LeavesBlockMixin {
         if(!(leavesBlock instanceof CherryLeavesBlock)){
             float f = random.nextFloat();
             if (f < this.spring_to_life$leafParticleChance) {
-                ColorParticleOption colorParticleOption = ColorParticleOption.create(STLParticleTypes.TINTED_LEAVES.get(), Minecraft.getInstance().getBlockColors().getColor(state, level, pos, 0));
+                ColorParticleOption colorParticleOption = ColorParticleOption.create(STLParticleTypes.TINTED_LEAVES.get(), SpringToLifeMod.getColorUtils().getBlockColor(state, level, pos, 0));
                 ParticleUtils.spawnParticleBelow(level, pos, random, colorParticleOption);
             }
         }
