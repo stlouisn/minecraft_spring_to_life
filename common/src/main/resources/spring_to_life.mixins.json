@@ -11,6 +11,7 @@
     "ChickenMixin",
     "CowMixin",
     "EatBlockGoalMixin",
+    "LeavesBlockMixin",
     "MobMixin",
     "PigMixin",
     "ZombieMixin"

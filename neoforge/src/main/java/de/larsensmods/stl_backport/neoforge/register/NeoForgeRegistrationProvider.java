@@ -2,6 +2,8 @@ package de.larsensmods.stl_backport.neoforge.register;
 
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -27,6 +29,7 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     private static final DeferredRegister<Item> ITEM_REGISTER = DeferredRegister.create(BuiltInRegistries.ITEM, SpringToLifeMod.MOD_ID);
     private static final DeferredRegister<Block> BLOCK_REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK, SpringToLifeMod.MOD_ID);
     private static final DeferredRegister<SoundEvent> SOUND_REGISTER = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, SpringToLifeMod.MOD_ID);
+    private static final DeferredRegister<ParticleType<?>> PARTICLE_TYPE_REGISTER = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, SpringToLifeMod.MOD_ID);
 
     public void finishRegistration(IEventBus bus) {
         TAB_REGISTER.register(bus);
@@ -34,6 +37,7 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
         ITEM_REGISTER.register(bus);
         BLOCK_REGISTER.register(bus);
         SOUND_REGISTER.register(bus);
+        PARTICLE_TYPE_REGISTER.register(bus);
     }
 
     public void addOverrideKey(String key, Object value) {
@@ -61,6 +65,11 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
 
     public Supplier<Item> registerItem(String key, Supplier<Item> item) {
         return ITEM_REGISTER.register(key, item);
+    }
+
+    @Override
+    public <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticleType(String key, Supplier<ParticleType<T>> particleType) {
+        return PARTICLE_TYPE_REGISTER.register(key, particleType);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package de.larsensmods.regutil;
 
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +19,7 @@ public interface IRegistrationProvider {
     Supplier<CreativeModeTab> registerCreativeTab(String key, Supplier<CreativeModeTab.Builder> tab);
     <T extends Entity> Supplier<EntityType<T>> registerEntityType(String key, Supplier<EntityType.Builder<T>> entityTypeBuilder);
     Supplier<Item> registerItem(String key, Supplier<Item> item);
+    <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticleType(String key, Supplier<ParticleType<T>> particleType);
     Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent);
 
 }
