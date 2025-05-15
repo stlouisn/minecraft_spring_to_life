@@ -6,6 +6,8 @@ import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.item.STLCreativeTabs;
 import de.larsensmods.stl_backport.item.STLItems;
+import de.larsensmods.stl_backport.worldgen.STLFeatures;
+import de.larsensmods.stl_backport.worldgen.decorators.STLDecoratorTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +26,8 @@ public final class SpringToLifeMod {
         STLCreativeTabs.initCreativeTabs(regProvider);
 
         STLSoundEvents.initSounds(regProvider);
+        STLDecoratorTypes.initDecoratorTypes(regProvider);
+        STLFeatures.initFeatures(regProvider);
 
         LOGGER.info("SpringToLifeMod end common init");
     }
