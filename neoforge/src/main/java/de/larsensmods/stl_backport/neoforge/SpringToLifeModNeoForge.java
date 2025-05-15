@@ -11,6 +11,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 import java.util.function.Function;
 
@@ -26,7 +27,7 @@ public final class SpringToLifeModNeoForge {
         registrationProvider.addOverrideKey("block:cactus_flower", (Function<BlockBehaviour.Properties, Block>) STLCactusFlowerBlockNeoForge::new);
 
         // Run our common setup.
-        SpringToLifeMod.init(registrationProvider);
+        SpringToLifeMod.init(registrationProvider, FMLEnvironment.dist.isClient());
 
         registrationProvider.finishRegistration(bus);
     }

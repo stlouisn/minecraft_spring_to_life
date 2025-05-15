@@ -4,12 +4,16 @@ import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.client.*;
 import de.larsensmods.stl_backport.item.STLItems;
+import de.larsensmods.stl_backport.particles.STLParticleTypes;
+import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.particle.CherryParticle;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.GrassColor;
@@ -44,5 +48,7 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
                 STLBlocks.BUSH.get());
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
                 STLItems.BUSH.get());
+
+        ParticleFactoryRegistry.getInstance().register(STLParticleTypes.TINTED_LEAVES.get(), FallingLeavesParticle.TintedLeavesProvider::new);
     }
 }
