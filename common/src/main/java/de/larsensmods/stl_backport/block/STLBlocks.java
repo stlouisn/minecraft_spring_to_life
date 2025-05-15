@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport.block;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -19,6 +20,8 @@ public class STLBlocks {
     public static Supplier<Block> CACTUS_FLOWER;
 
     public static void initBlocks(IRegistrationProvider provider) {
+        SpringToLifeMod.LOGGER.info("Initializing blocks");
+
         BUSH = provider.registerBlock(
                 "bush",
                 STLBushBlock::new,

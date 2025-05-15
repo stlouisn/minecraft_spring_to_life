@@ -1,14 +1,14 @@
 package de.larsensmods.stl_backport.entity;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Supplier;
 
-public abstract class STLEntityTypes {
+public class STLEntityTypes {
 
     public static Supplier<EntityType<WarmChicken>> WARM_CHICKEN;
     public static Supplier<EntityType<ColdChicken>> COLD_CHICKEN;
@@ -20,6 +20,8 @@ public abstract class STLEntityTypes {
     public static Supplier<EntityType<ColdCow>> COLD_COW;
 
     public static void initEntityTypes(IRegistrationProvider registrationProvider){
+        SpringToLifeMod.LOGGER.info("Initializing entity types");
+
         WARM_CHICKEN = registrationProvider.registerEntityType(
                 "warm_chicken",
                 () -> EntityType.Builder.of(WarmChicken::new, MobCategory.CREATURE)
