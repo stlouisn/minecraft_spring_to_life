@@ -1,5 +1,6 @@
 package de.larsensmods.stl_backport.fabric.register;
 
+import com.mojang.serialization.MapCodec;
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.Registry;
@@ -14,6 +15,10 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -37,6 +42,12 @@ public class FabricRegistrationProvider implements IRegistrationProvider {
         return () -> entityType;
     }
 
+    @Override
+    public <T extends FeatureConfiguration> Supplier<Feature<T>> registerFeature(String key, Supplier<Feature<T>> feature) {
+        Feature<T> regFeature = Registry.register(BuiltInRegistries.FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), feature.get());
+        return () -> regFeature;
+    }
+
     public Supplier<Item> registerItem(String key, Supplier<Item> item) {
         Item regItem = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), item.get());
         return () -> regItem;
@@ -52,6 +63,12 @@ public class FabricRegistrationProvider implements IRegistrationProvider {
     public Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent) {
         SoundEvent regSoundEvent = Registry.register(BuiltInRegistries.SOUND_EVENT, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), soundEvent.get());
         return () -> regSoundEvent;
+    }
+
+    @Override
+    public <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> registerTreeDecoratorType(String key, MapCodec<T> treeDecoratorTypeCodec) {
+        TreeDecoratorType<T> decoratorType = Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), new TreeDecoratorType<>(treeDecoratorTypeCodec));
+        return () -> decoratorType;
     }
 
 }

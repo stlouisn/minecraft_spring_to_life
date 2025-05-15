@@ -6,6 +6,8 @@ import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.item.STLCreativeTabs;
 import de.larsensmods.stl_backport.item.STLItems;
+import de.larsensmods.stl_backport.worldgen.STLFeatures;
+import de.larsensmods.stl_backport.worldgen.decorators.STLDecoratorTypes;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.util.ClientColorUtils;
 import de.larsensmods.stl_backport.util.ColorUtils;
@@ -38,6 +40,8 @@ public final class SpringToLifeMod {
         STLParticleTypes.initParticleTypes(regProvider);
 
         STLSoundEvents.initSounds(regProvider);
+        STLDecoratorTypes.initDecoratorTypes(regProvider);
+        STLFeatures.initFeatures(regProvider);
 
         LOGGER.info("SpringToLifeMod end common init");
     }
