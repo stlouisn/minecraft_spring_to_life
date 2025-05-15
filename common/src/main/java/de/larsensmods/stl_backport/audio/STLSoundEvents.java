@@ -12,6 +12,8 @@ public class STLSoundEvents {
     public static Supplier<SoundEvent> DRY_GRASS;
 
     public static void initSounds(IRegistrationProvider provider) {
+        SpringToLifeMod.LOGGER.info("Initializing sound events");
+
         DRY_GRASS = provider.registerSoundEvent("block.dry_grass.ambient", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "block.dry_grass.ambient")));
     }
 

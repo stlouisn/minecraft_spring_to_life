@@ -3,8 +3,7 @@ package de.larsensmods.stl_backport.block;
 import com.mojang.serialization.MapCodec;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import de.larsensmods.stl_backport.audio.STLSoundEvents;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.sounds.EntityBoundSoundInstance;
+import de.larsensmods.stl_backport.util.SoundUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -43,8 +42,8 @@ public class STLTallDryGrassBlock extends STLDryVegetationBlock implements Bonem
                     level.getBlockState(pos.below()).is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "desert_dry_vegetation_sound_trigger"))) &&
                         level.getBlockState(pos.below().below()).is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "desert_dry_vegetation_sound_trigger"))))
             {
-                if (level.isClientSide() && Minecraft.getInstance().player != null) {
-                    Minecraft.getInstance().getSoundManager().play(new EntityBoundSoundInstance(STLSoundEvents.DRY_GRASS.get(), SoundSource.AMBIENT, 1.0F, 1.0F, Minecraft.getInstance().player, random.nextLong()));
+                if (level.isClientSide()) {
+                    SoundUtil.playPlayerSoundEffect(STLSoundEvents.DRY_GRASS.get(), SoundSource.AMBIENT, 1.0F, 1.0F, random.nextLong());
                 }
             }
         }
