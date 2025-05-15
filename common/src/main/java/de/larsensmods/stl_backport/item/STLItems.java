@@ -1,6 +1,7 @@
 package de.larsensmods.stl_backport.item;
 
 import de.larsensmods.regutil.IRegistrationProvider;
+import de.larsensmods.stl_backport.SpringToLifeMod;
 import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import net.minecraft.world.item.BlockItem;
@@ -31,6 +32,8 @@ public class STLItems {
     public static Supplier<Item> CACTUS_FLOWER;
 
     public static void initItems(IRegistrationProvider registrationProvider){
+        SpringToLifeMod.LOGGER.info("Initializing items");
+
         WARM_CHICKEN_SPAWN_EGG = registrationProvider.registerItem(
                 "warm_chicken_spawn_egg",
                 () -> new SpawnEggItem(STLEntityTypes.WARM_CHICKEN.get(), 0xFFAA00, 0xE5B54E, new Item.Properties())
