@@ -27,6 +27,7 @@ newer versions.
 
 #### Worldgen:
 - Fallen trees
+- Camels spawn in desert biomes
 
 ### In Development:
 
