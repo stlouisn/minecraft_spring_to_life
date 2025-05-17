@@ -29,3 +29,6 @@ side = "BOTH"
 
 [[mixins]]
 config = "spring_to_life.mixins.json"
+
+[[mixins]]
+config = "spring_to_life_neoforge.mixins.json"
