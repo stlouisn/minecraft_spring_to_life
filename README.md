@@ -29,6 +29,10 @@ newer versions.
 - Fallen trees
 - Camels spawn in desert biomes
 
+#### Other:
+- Lodestone recipe changed
+- Lodestone generates as loot in ruined portal chests
+
 ### In Development:
 
 ### Down the Line:
