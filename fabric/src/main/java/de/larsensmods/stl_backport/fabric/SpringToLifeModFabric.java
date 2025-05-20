@@ -25,9 +25,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
@@ -72,7 +72,10 @@ public final class SpringToLifeModFabric implements ModInitializer {
         FuelRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 5 * 20);
         FuelRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 5 * 20);
 
-        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add((trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.TALL_DRY_GRASS.get()), 12, 0, 0)));
+        VillagerTrades.ItemListing dryGrassTrade = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.TALL_DRY_GRASS.get()), 12, 0, 0);
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(dryGrassTrade));
+        //noinspection UnstableApiUsage
+        TradeOfferHelper.registerRebalancedWanderingTraderOffers(wanderingTraderOffersBuilder -> wanderingTraderOffersBuilder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL, dryGrassTrade));
 
         this.applyBiomeModifications();
     }
