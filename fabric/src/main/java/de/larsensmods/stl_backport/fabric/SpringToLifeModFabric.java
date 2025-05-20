@@ -14,6 +14,8 @@ import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
+import net.fabricmc.fabric.api.loot.v3.FabricLootPoolBuilder;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -25,7 +27,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.ItemStack;
@@ -36,6 +37,23 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.*;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
+import net.minecraft.world.level.storage.loot.providers.number.LootNumberProviderType;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 public final class SpringToLifeModFabric implements ModInitializer {
     @Override
@@ -75,6 +93,7 @@ public final class SpringToLifeModFabric implements ModInitializer {
         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add((trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.TALL_DRY_GRASS.get()), 12, 0, 0)));
 
         this.applyBiomeModifications();
+        this.applyLootTableModifications();
     }
 
     private void applyBiomeModifications() {
@@ -112,5 +131,21 @@ public final class SpringToLifeModFabric implements ModInitializer {
                         context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "patch_dry_grass_badlands"))))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.DESERT),
                         context -> context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "patch_dry_grass_desert"))));
+    }
+
+    private void applyLootTableModifications(){
+        LootTableEvents.MODIFY.register((resourceKey, builder, lootTableSource, provider) -> {
+            if(lootTableSource.isBuiltin() && BuiltInLootTables.RUINED_PORTAL.equals(resourceKey)){
+                LootPool.Builder newPool = LootPool.lootPool()
+                        .with(EmptyLootItem.emptyItem().build())
+                        .with(LootItem.lootTableItem(Items.LODESTONE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f)))
+                                .setWeight(2)
+                                .build()
+                        );
+
+                builder.pool(newPool.build());
+            }
+        });
     }
 }
