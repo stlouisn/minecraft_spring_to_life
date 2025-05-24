@@ -3,6 +3,9 @@
     "spring_to_life:bush": {
       "chance": 0.3
     },
+    "spring_to_life:firefly_bush": {
+      "chance": 0.3
+    },
     "spring_to_life:short_dry_grass": {
       "chance": 0.3
     },

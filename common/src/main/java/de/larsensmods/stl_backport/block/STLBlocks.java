@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 public class STLBlocks {
 
     public static Supplier<Block> BUSH;
+    public static Supplier<Block> FIREFLY_BUSH;
 
     public static Supplier<Block> SHORT_DRY_GRASS;
     public static Supplier<Block> TALL_DRY_GRASS;
@@ -32,6 +33,19 @@ public class STLBlocks {
                         .instabreak()
                         .sound(SoundType.GRASS)
                         .ignitedByLava()
+                        .pushReaction(PushReaction.DESTROY)
+        );
+
+        FIREFLY_BUSH = provider.registerBlock(
+                "firefly_bush",
+                STLFireflyBushBlock::new,
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.PLANT)
+                        .ignitedByLava()
+                        .lightLevel(state -> 2)
+                        .noCollission()
+                        .instabreak()
+                        .sound(SoundType.SWEET_BERRY_BUSH)
                         .pushReaction(PushReaction.DESTROY)
         );
 

@@ -15,10 +15,12 @@ import net.neoforged.neoforge.event.village.WandererTradesEvent;
 public class GameEvents {
 
     public static final VillagerTrades.ItemListing DRY_GRASS_TRADE = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.TALL_DRY_GRASS.get()), 12, 0, 0);
+    public static final  VillagerTrades.ItemListing FIREFLY_BUSH_TRADE = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 3), new ItemStack(STLBlocks.FIREFLY_BUSH.get()), 12, 0, 0);
 
     @SubscribeEvent
     public static void addWandererTrades(WandererTradesEvent event) {
         event.getGenericTrades().add(DRY_GRASS_TRADE);
+        event.getRareTrades().add(FIREFLY_BUSH_TRADE);
     }
 
 }

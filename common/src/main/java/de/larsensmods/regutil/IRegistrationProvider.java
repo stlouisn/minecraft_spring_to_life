@@ -3,6 +3,7 @@ package de.larsensmods.regutil;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -26,6 +27,7 @@ public interface IRegistrationProvider {
     <T extends FeatureConfiguration> Supplier<Feature<T>> registerFeature(String key, Supplier<Feature<T>> feature);
     Supplier<Item> registerItem(String key, Supplier<Item> item);
     <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticleType(String key, Supplier<ParticleType<T>> particleType);
+    Supplier<SimpleParticleType> registerParticleTypeSimple(String key);
     Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent);
     <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> registerTreeDecoratorType(String key, MapCodec<T> treeDecoratorTypeCodec);
 

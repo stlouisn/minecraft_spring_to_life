@@ -6,6 +6,7 @@ import de.larsensmods.stl_backport.entity.client.*;
 import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
+import de.larsensmods.stl_backport.particles.client.FireflyParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -13,7 +14,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.particle.CherryParticle;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.GrassColor;
@@ -38,6 +38,7 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
 
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.FIREFLY_BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.SHORT_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.TALL_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.CACTUS_FLOWER.get(), RenderType.cutout());
@@ -50,5 +51,6 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
                 STLItems.BUSH.get());
 
         ParticleFactoryRegistry.getInstance().register(STLParticleTypes.TINTED_LEAVES.get(), FallingLeavesParticle.TintedLeavesProvider::new);
+        ParticleFactoryRegistry.getInstance().register(STLParticleTypes.FIREFLY.get(), FireflyParticle.FireflyProvider::new);
     }
 }

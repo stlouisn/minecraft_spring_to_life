@@ -34,11 +34,12 @@ newer versions.
 - Lodestone generates as loot in ruined portal chests
 
 ### In Development:
+- Firefly Bush
 
 ### Down the Line:
-- Firefly Bush
 - Leaf Litter
 - Wildflowers
 
 ## Attributions
 Field ambience 01.wav by szelestamas -- https://freesound.org/s/620099/ -- License: Creative Commons 0
+CRICKETS - 2 by SamuelGremaud -- https://freesound.org/s/437027/ -- License: Creative Commons 0

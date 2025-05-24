@@ -7,6 +7,7 @@ import de.larsensmods.stl_backport.entity.client.*;
 import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
+import de.larsensmods.stl_backport.particles.client.FireflyParticle;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -61,6 +62,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event){
         event.registerSpriteSet(STLParticleTypes.TINTED_LEAVES.get(), FallingLeavesParticle.TintedLeavesProvider::new);
+        event.registerSpriteSet(STLParticleTypes.FIREFLY.get(), FireflyParticle.FireflyProvider::new);
     }
 
 }

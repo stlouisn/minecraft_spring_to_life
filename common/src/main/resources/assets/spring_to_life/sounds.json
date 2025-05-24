@@ -14,5 +14,16 @@
       "spring_to_life:block/dry_grass/wind11"
     ],
     "subtitle": "subtitles.block.dry_grass.ambient"
+  },
+  "block.firefly_bush.ambient": {
+    "sounds": [
+      "spring_to_life:block/firefly_bush/ambient1",
+      "spring_to_life:block/firefly_bush/ambient2",
+      "spring_to_life:block/firefly_bush/ambient3",
+      "spring_to_life:block/firefly_bush/ambient4",
+      "spring_to_life:block/firefly_bush/ambient5",
+      "spring_to_life:block/firefly_bush/ambient6"
+    ],
+    "subtitle": "subtitles.block.firefly_bush.ambient"
   }
 }
