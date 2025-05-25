@@ -34,10 +34,10 @@ newer versions.
 - Lodestone generates as loot in ruined portal chests
 
 ### In Development:
+- Leaf Litter
 
 ### Down the Line:
 - Firefly Bush
-- Leaf Litter
 - Wildflowers
 
 ## Attributions

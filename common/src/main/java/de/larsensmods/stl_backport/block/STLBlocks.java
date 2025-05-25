@@ -12,6 +12,7 @@ import java.util.function.Supplier;
 
 public class STLBlocks {
 
+    public static Supplier<Block> LEAF_LITTER;
     public static Supplier<Block> BUSH;
 
     public static Supplier<Block> SHORT_DRY_GRASS;
@@ -21,6 +22,17 @@ public class STLBlocks {
 
     public static void initBlocks(IRegistrationProvider provider) {
         SpringToLifeMod.LOGGER.info("Initializing blocks");
+
+        LEAF_LITTER = provider.registerBlock(
+                "leaf_litter",
+                STLLeafLitterBlock::new,
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.COLOR_BROWN)
+                        .replaceable()
+                        .noCollission()
+                        //TODO: .sound(SoundType.LEAF_LITTER)
+                        .pushReaction(PushReaction.DESTROY)
+        );
 
         BUSH = provider.registerBlock(
                 "bush",
