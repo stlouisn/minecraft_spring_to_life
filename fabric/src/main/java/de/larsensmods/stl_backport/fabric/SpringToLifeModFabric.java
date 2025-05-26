@@ -65,16 +65,19 @@ public final class SpringToLifeModFabric implements ModInitializer {
         SpawnPlacements.register(STLEntityTypes.COLD_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
         SpawnPlacements.register(STLEntityTypes.WARM_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
 
+        FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.LEAF_LITTER.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.BUSH.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.SHORT_DRY_GRASS.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.TALL_DRY_GRASS.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.CACTUS_FLOWER.get(), 60, 100);
 
+        CompostingChanceRegistry.INSTANCE.add(STLBlocks.LEAF_LITTER.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.BUSH.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.CACTUS_FLOWER.get(), 0.3f);
 
+        FuelRegistry.INSTANCE.add(STLItems.LEAF_LITTER.get(), 5 * 20);
         FuelRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 5 * 20);
         FuelRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 5 * 20);
 
