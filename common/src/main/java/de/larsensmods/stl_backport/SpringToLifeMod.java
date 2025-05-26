@@ -32,6 +32,8 @@ public final class SpringToLifeMod {
             colorUtils = new ServerColorUtils();
         }
 
+        STLSoundEvents.initSounds(regProvider);
+
         STLEntityTypes.initEntityTypes(regProvider);
         STLBlocks.initBlocks(regProvider);
         STLItems.initItems(regProvider);
@@ -39,7 +41,6 @@ public final class SpringToLifeMod {
 
         STLParticleTypes.initParticleTypes(regProvider);
 
-        STLSoundEvents.initSounds(regProvider);
         STLDecoratorTypes.initDecoratorTypes(regProvider);
         STLFeatures.initFeatures(regProvider);
 
