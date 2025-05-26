@@ -3,7 +3,7 @@
   "config": {
     "decorators": [
       {
-        "type": "minecraft:place_on_ground",
+        "type": "spring_to_life:place_on_ground",
         "block_state_provider": {
           "type": "minecraft:weighted_state_provider",
           "entries": [
@@ -134,7 +134,7 @@
         "tries": 96
       },
       {
-        "type": "minecraft:place_on_ground",
+        "type": "spring_to_life:place_on_ground",
         "block_state_provider": {
           "type": "minecraft:weighted_state_provider",
           "entries": [

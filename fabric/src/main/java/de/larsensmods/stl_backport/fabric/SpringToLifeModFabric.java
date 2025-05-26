@@ -22,6 +22,8 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
@@ -37,6 +39,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.*;
@@ -91,6 +94,18 @@ public final class SpringToLifeModFabric implements ModInitializer {
     }
 
     private void applyBiomeModifications() {
+        BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "add_leaf_litter_patches"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
+                        context -> context.getGenerationSettings()
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "patch_leaf_litter"))));
+
+        BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "replace_forest_tree_feature"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.FOREST),
+                        context -> {
+                    context.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
+                    context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "trees_birch_and_oak_leaf_litter")));
+                });
+
         BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "add_bushes"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "bush_biomes"))),
                         context -> context.getGenerationSettings()
