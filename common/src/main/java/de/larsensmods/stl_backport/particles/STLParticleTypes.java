@@ -5,6 +5,7 @@ import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import org.jetbrains.annotations.NotNull;
@@ -14,6 +15,7 @@ import java.util.function.Supplier;
 public class STLParticleTypes {
 
     public static Supplier<ParticleType<ColorParticleOption>> TINTED_LEAVES;
+    public static Supplier<SimpleParticleType> FIREFLY;
 
     public static void initParticleTypes(IRegistrationProvider provider){
         SpringToLifeMod.LOGGER.info("Initializing particle types");
@@ -30,6 +32,8 @@ public class STLParticleTypes {
                 return ColorParticleOption.streamCodec(this);
             }
         });
+
+        FIREFLY = provider.registerParticleTypeSimple("firefly");
     }
 
 }

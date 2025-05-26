@@ -31,6 +31,7 @@ public class STLCreativeTabs {
 
                     output.accept(STLItems.LEAF_LITTER.get());
                     output.accept(STLItems.BUSH.get());
+                    output.accept(STLItems.FIREFLY_BUSH.get());
                     output.accept(STLItems.SHORT_DRY_GRASS.get());
                     output.accept(STLItems.TALL_DRY_GRASS.get());
                     output.accept(STLItems.CACTUS_FLOWER.get());

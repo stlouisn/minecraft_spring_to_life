@@ -7,6 +7,7 @@ import de.larsensmods.stl_backport.entity.client.*;
 import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
+import de.larsensmods.stl_backport.particles.client.FireflyParticle;
 import de.larsensmods.stl_backport.util.ClientColorUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -41,6 +42,7 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.LEAF_LITTER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.FIREFLY_BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.SHORT_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.TALL_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.CACTUS_FLOWER.get(), RenderType.cutout());
@@ -60,5 +62,6 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
                 STLItems.BUSH.get());
 
         ParticleFactoryRegistry.getInstance().register(STLParticleTypes.TINTED_LEAVES.get(), FallingLeavesParticle.TintedLeavesProvider::new);
+        ParticleFactoryRegistry.getInstance().register(STLParticleTypes.FIREFLY.get(), FireflyParticle.FireflyProvider::new);
     }
 }

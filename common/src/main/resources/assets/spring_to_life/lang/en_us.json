@@ -18,11 +18,13 @@
 
   "block.spring_to_life.leaf_litter": "Leaf Litter",
   "block.spring_to_life.bush": "Bush",
+  "block.spring_to_life.firefly_bush": "Firefly Bush",
   "block.spring_to_life.short_dry_grass": "Short Dry Grass",
   "block.spring_to_life.tall_dry_grass": "Tall Dry Grass",
   "block.spring_to_life.cactus_flower": "Cactus Flower",
 
   "itemGroup.spring_to_life": "Spring to Life",
 
-  "subtitles.block.dry_grass.ambient": "Dry Grass Wind"
+  "subtitles.block.dry_grass.ambient": "Dry Grass Wind",
+  "subtitles.block.firefly_bush.ambient": "Firefly Bush Ambient"
 }

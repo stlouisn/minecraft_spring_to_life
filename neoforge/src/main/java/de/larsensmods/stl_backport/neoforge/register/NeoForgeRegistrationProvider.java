@@ -5,6 +5,7 @@ import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -84,6 +85,11 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     @Override
     public <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticleType(String key, Supplier<ParticleType<T>> particleType) {
         return PARTICLE_TYPE_REGISTER.register(key, particleType);
+    }
+
+    @Override
+    public Supplier<SimpleParticleType> registerParticleTypeSimple(String key) {
+        return PARTICLE_TYPE_REGISTER.register(key, () -> new SimpleParticleType(false));
     }
 
     @Override
