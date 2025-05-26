@@ -1,4 +1,37 @@
 {
+  "block.leaf_litter.break":{
+    "sounds": [
+      "spring_to_life:block/leaf_litter/break1"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.leaf_litter.step":{
+    "sounds": [
+      "spring_to_life:block/leaf_litter/step1",
+      "spring_to_life:block/leaf_litter/step2",
+      "spring_to_life:block/leaf_litter/step3",
+      "spring_to_life:block/leaf_litter/step4"
+    ],
+    "subtitle": "subtitles.block.generic.step"
+  },
+  "block.leaf_litter.place": {
+    "sounds": [
+      "spring_to_life:block/leaf_litter/place1"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.leaf_litter.hit": {
+    "sounds": [
+      "spring_to_life:block/leaf_litter/hit1"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.leaf_litter.fall": {
+    "sounds": [
+      "spring_to_life:block/leaf_litter/fall1"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
   "block.dry_grass.ambient": {
     "sounds": [
       "spring_to_life:block/dry_grass/wind1",

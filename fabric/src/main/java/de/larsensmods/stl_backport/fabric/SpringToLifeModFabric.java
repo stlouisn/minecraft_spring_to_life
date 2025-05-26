@@ -5,6 +5,7 @@ import de.larsensmods.stl_backport.entity.ColdChicken;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.WarmChicken;
 import de.larsensmods.stl_backport.entity.WarmPig;
+import de.larsensmods.stl_backport.fabric.block.STLLeafLitterBlockFabric;
 import de.larsensmods.stl_backport.fabric.register.FabricRegistrationProvider;
 import de.larsensmods.stl_backport.item.STLItems;
 import net.fabricmc.api.EnvType;
@@ -22,6 +23,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
@@ -35,6 +37,8 @@ import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -43,10 +47,15 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
+import java.util.function.Function;
+
 public final class SpringToLifeModFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         FabricRegistrationProvider registrationProvider = new FabricRegistrationProvider();
+
+        //Register override keys
+        registrationProvider.addOverrideKey("block:leaf_litter", (Function<BlockBehaviour.Properties, Block>) STLLeafLitterBlockFabric::new);
 
         // Run our common setup.
         SpringToLifeMod.init(registrationProvider, FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT));
@@ -65,18 +74,21 @@ public final class SpringToLifeModFabric implements ModInitializer {
         SpawnPlacements.register(STLEntityTypes.COLD_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
         SpawnPlacements.register(STLEntityTypes.WARM_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
 
+        FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.LEAF_LITTER.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.BUSH.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.FIREFLY_BUSH.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.SHORT_DRY_GRASS.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.TALL_DRY_GRASS.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.CACTUS_FLOWER.get(), 60, 100);
 
+        CompostingChanceRegistry.INSTANCE.add(STLBlocks.LEAF_LITTER.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.BUSH.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.FIREFLY_BUSH.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.CACTUS_FLOWER.get(), 0.3f);
 
+        FuelRegistry.INSTANCE.add(STLItems.LEAF_LITTER.get(), 5 * 20);
         FuelRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 5 * 20);
         FuelRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 5 * 20);
 
@@ -95,6 +107,18 @@ public final class SpringToLifeModFabric implements ModInitializer {
     }
 
     private void applyBiomeModifications() {
+        BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "add_leaf_litter_patches"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
+                        context -> context.getGenerationSettings()
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "patch_leaf_litter"))));
+
+        BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "replace_forest_tree_feature"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.FOREST),
+                        context -> {
+                    context.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK);
+                    context.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "trees_birch_and_oak_leaf_litter")));
+                });
+
         BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "add_bushes"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "bush_biomes"))),
                         context -> context.getGenerationSettings()

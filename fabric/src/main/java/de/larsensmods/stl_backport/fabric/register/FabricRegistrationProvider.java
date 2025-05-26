@@ -22,13 +22,27 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class FabricRegistrationProvider implements IRegistrationProvider {
 
+    private final Map<String, Object> overrideKeys = new HashMap<>();
+
+    public void addOverrideKey(String key, Object value) {
+        overrideKeys.put(key, value);
+    }
+
+    @SuppressWarnings("unchecked")
     @Override
     public Supplier<Block> registerBlock(String key, Function<BlockBehaviour.Properties, Block> constructor, BlockBehaviour.Properties properties) {
+        if(overrideKeys.containsKey("block:" + key) && overrideKeys.get("block:" + key) instanceof Function<?, ?> function) {
+            SpringToLifeMod.LOGGER.info("Overriding Block {}", key);
+            Block regBlock = Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), ((Function<BlockBehaviour.Properties, Block>) function).apply(properties));
+            return () -> regBlock;
+        }
         Block regBlock = Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, key), constructor.apply(properties));
         return () -> regBlock;
     }

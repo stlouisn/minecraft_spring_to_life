@@ -8,6 +8,7 @@ import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
 import de.larsensmods.stl_backport.particles.client.FireflyParticle;
+import de.larsensmods.stl_backport.util.ClientColorUtils;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -44,18 +45,25 @@ public class ClientModEvents {
     }
 
     @SubscribeEvent
+    public static void registerColorResolvers(RegisterColorHandlersEvent.ColorResolvers event){
+        event.register(ClientColorUtils.DRY_FOLIAGE_COLOR_RESOLVER);
+    }
+
+    @SubscribeEvent
     public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
         event.register((state, level, pos, tintIndex) -> level != null && pos != null
-                ? BiomeColors.getAverageGrassColor(level, pos)
-                : GrassColor.getDefaultColor(),
-
+                        ? SpringToLifeMod.getColorUtils().getAverageDryFoliageColor(level, pos)
+                        : -10732494,
+                STLBlocks.LEAF_LITTER.get());
+        event.register((state, level, pos, tintIndex) -> level != null && pos != null
+                        ? BiomeColors.getAverageGrassColor(level, pos)
+                        : GrassColor.getDefaultColor(),
                 STLBlocks.BUSH.get());
     }
 
     @SubscribeEvent
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
-
                 STLItems.BUSH.get());
     }
 

@@ -2,6 +2,7 @@ package de.larsensmods.stl_backport.block;
 
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
+import de.larsensmods.stl_backport.audio.STLSoundTypes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,6 +13,7 @@ import java.util.function.Supplier;
 
 public class STLBlocks {
 
+    public static Supplier<Block> LEAF_LITTER;
     public static Supplier<Block> BUSH;
     public static Supplier<Block> FIREFLY_BUSH;
 
@@ -22,6 +24,16 @@ public class STLBlocks {
 
     public static void initBlocks(IRegistrationProvider provider) {
         SpringToLifeMod.LOGGER.info("Initializing blocks");
+
+        LEAF_LITTER = provider.registerBlock(
+                "leaf_litter",
+                STLLeafLitterBlock::new,
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.COLOR_BROWN)
+                        .replaceable()
+                        .noCollission()
+                        .pushReaction(PushReaction.DESTROY)
+        );
 
         BUSH = provider.registerBlock(
                 "bush",
