@@ -26,6 +26,7 @@ public class STLItems {
     public static Supplier<Item> BROWN_EGG;
 
     //BLOCK ITEMS
+    public static Supplier<Item> LEAF_LITTER;
     public static Supplier<Item> BUSH;
     public static Supplier<Item> SHORT_DRY_GRASS;
     public static Supplier<Item> TALL_DRY_GRASS;
@@ -68,6 +69,12 @@ public class STLItems {
                 () -> new STLEggItem(new Item.Properties().stacksTo(16))
         );
 
+        LEAF_LITTER = registerBlockItem(
+                registrationProvider,
+                "leaf_litter",
+                STLBlocks.LEAF_LITTER,
+                new Item.Properties()
+        );
         BUSH = registerBlockItem(
                 registrationProvider,
                 "bush",

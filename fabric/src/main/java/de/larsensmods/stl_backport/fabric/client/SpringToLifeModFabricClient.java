@@ -1,19 +1,21 @@
 package de.larsensmods.stl_backport.fabric.client;
 
+import de.larsensmods.stl_backport.SpringToLifeMod;
 import de.larsensmods.stl_backport.block.STLBlocks;
 import de.larsensmods.stl_backport.entity.STLEntityTypes;
 import de.larsensmods.stl_backport.entity.client.*;
 import de.larsensmods.stl_backport.item.STLItems;
 import de.larsensmods.stl_backport.particles.STLParticleTypes;
 import de.larsensmods.stl_backport.particles.client.FallingLeavesParticle;
+import de.larsensmods.stl_backport.util.ClientColorUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorResolverRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.particle.CherryParticle;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.GrassColor;
@@ -37,15 +39,23 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.WARM_COW, WarmCowModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
 
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.LEAF_LITTER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.SHORT_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.TALL_DRY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.CACTUS_FLOWER.get(), RenderType.cutout());
 
+        ColorResolverRegistry.register(ClientColorUtils.DRY_FOLIAGE_COLOR_RESOLVER);
+
+        ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
+                        ? SpringToLifeMod.getColorUtils().getAverageDryFoliageColor(level, pos)
+                        : -10732494,
+                STLBlocks.LEAF_LITTER.get());
         ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
                         ? BiomeColors.getAverageGrassColor(level, pos)
                         : GrassColor.getDefaultColor(),
                 STLBlocks.BUSH.get());
+
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColor.getDefaultColor(),
                 STLItems.BUSH.get());
 

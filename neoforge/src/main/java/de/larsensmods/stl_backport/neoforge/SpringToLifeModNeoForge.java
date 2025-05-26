@@ -1,9 +1,6 @@
 package de.larsensmods.stl_backport.neoforge;
 
-import de.larsensmods.stl_backport.neoforge.block.STLBushBlockNeoForge;
-import de.larsensmods.stl_backport.neoforge.block.STLCactusFlowerBlockNeoForge;
-import de.larsensmods.stl_backport.neoforge.block.STLShortDryGrassBlockNeoForge;
-import de.larsensmods.stl_backport.neoforge.block.STLTallDryGrassBlockNeoForge;
+import de.larsensmods.stl_backport.neoforge.block.*;
 import de.larsensmods.stl_backport.neoforge.register.NeoForgeRegistrationProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,6 +18,7 @@ public final class SpringToLifeModNeoForge {
         NeoForgeRegistrationProvider registrationProvider = new NeoForgeRegistrationProvider();
 
         //Register override keys
+        registrationProvider.addOverrideKey("block:leaf_litter", (Function<BlockBehaviour.Properties, Block>) STLLeafLitterBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:bush", (Function<BlockBehaviour.Properties, Block>) STLBushBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:short_dry_grass", (Function<BlockBehaviour.Properties, Block>) STLShortDryGrassBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:tall_dry_grass", (Function<BlockBehaviour.Properties, Block>) STLTallDryGrassBlockNeoForge::new);
