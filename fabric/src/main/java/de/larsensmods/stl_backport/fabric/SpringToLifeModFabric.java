@@ -116,6 +116,14 @@ public final class SpringToLifeModFabric implements ModInitializer {
                         context -> context.getGenerationSettings()
                                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "patch_leaf_litter"))));
 
+        BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "add_wildflowers"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST),
+                        context -> context.getGenerationSettings()
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "wildflowers_birch_forest"))))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.MEADOW),
+                        context -> context.getGenerationSettings()
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "wildflowers_meadow"))));
+
         BiomeModifications.create(ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "replace_forest_tree_feature"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.FOREST),
                         context -> {
