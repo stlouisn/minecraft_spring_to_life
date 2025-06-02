@@ -18,6 +18,7 @@ newer versions.
 
 #### Blocks:
 - Leaf Litter
+- Wildflowers
 - Bush
 - Firefly Bush
 - Short Dry Grass
@@ -36,7 +37,6 @@ newer versions.
 - Lodestone generates as loot in ruined portal chests
 
 ### In Development:
-- Wildflowers
 
 ### Down the Line:
 
