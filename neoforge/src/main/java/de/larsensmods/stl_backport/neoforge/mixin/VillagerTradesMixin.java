@@ -15,10 +15,11 @@ public class VillagerTradesMixin {
         VillagerTrades.ItemListing[] castLeft = (VillagerTrades.ItemListing[]) left;
         Integer castRight = (Integer) right;
 
-        VillagerTrades.ItemListing[] newLeft = new VillagerTrades.ItemListing[castLeft.length + 2];
+        VillagerTrades.ItemListing[] newLeft = new VillagerTrades.ItemListing[castLeft.length + 3];
         System.arraycopy(castLeft, 0, newLeft, 0, castLeft.length);
         newLeft[castLeft.length] = GameEvents.DRY_GRASS_TRADE;
-        newLeft[castLeft.length + 1] = GameEvents.FIREFLY_BUSH_TRADE;
+        newLeft[castLeft.length + 1] = GameEvents.WILDFLOWERS_TRADE;
+        newLeft[castLeft.length + 2] = GameEvents.FIREFLY_BUSH_TRADE;
 
         return Pair.of(newLeft, castRight);
     }

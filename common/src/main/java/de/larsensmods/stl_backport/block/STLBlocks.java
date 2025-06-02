@@ -2,8 +2,8 @@ package de.larsensmods.stl_backport.block;
 
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
-import de.larsensmods.stl_backport.audio.STLSoundTypes;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -14,6 +14,7 @@ import java.util.function.Supplier;
 public class STLBlocks {
 
     public static Supplier<Block> LEAF_LITTER;
+    public static Supplier<Block> WILDFLOWERS;
     public static Supplier<Block> BUSH;
     public static Supplier<Block> FIREFLY_BUSH;
 
@@ -33,6 +34,12 @@ public class STLBlocks {
                         .replaceable()
                         .noCollission()
                         .pushReaction(PushReaction.DESTROY)
+        );
+
+        WILDFLOWERS = provider.registerBlock(
+                "wildflowers",
+                PinkPetalsBlock::new,
+                BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.PINK_PETALS).pushReaction(PushReaction.DESTROY)
         );
 
         BUSH = provider.registerBlock(
