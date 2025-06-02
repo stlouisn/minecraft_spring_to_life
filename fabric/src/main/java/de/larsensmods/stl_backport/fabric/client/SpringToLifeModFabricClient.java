@@ -54,6 +54,13 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
                         ? SpringToLifeMod.getColorUtils().getAverageDryFoliageColor(level, pos)
                         : -10732494,
                 STLBlocks.LEAF_LITTER.get());
+        ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> {
+            if(tintIndex != 0){
+                return level != null && pos != null ? BiomeColors.getAverageGrassColor(level, pos) : GrassColor.getDefaultColor();
+            }else{
+                return -1;
+            }
+        }, STLBlocks.WILDFLOWERS.get());
         ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> level != null && pos != null
                         ? BiomeColors.getAverageGrassColor(level, pos)
                         : GrassColor.getDefaultColor(),
