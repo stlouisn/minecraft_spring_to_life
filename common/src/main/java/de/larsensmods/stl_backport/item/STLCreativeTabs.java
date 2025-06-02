@@ -30,6 +30,7 @@ public class STLCreativeTabs {
                     output.accept(STLItems.BROWN_EGG.get());
 
                     output.accept(STLItems.LEAF_LITTER.get());
+                    output.accept(STLItems.WILDFLOWERS.get());
                     output.accept(STLItems.BUSH.get());
                     output.accept(STLItems.FIREFLY_BUSH.get());
                     output.accept(STLItems.SHORT_DRY_GRASS.get());

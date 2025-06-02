@@ -36,9 +36,9 @@ newer versions.
 - Lodestone generates as loot in ruined portal chests
 
 ### In Development:
+- Wildflowers
 
 ### Down the Line:
-- Wildflowers
 
 ## Attributions
 Walking on Dry Leaves.wav by ChamoneSteyn -- https://freesound.org/s/542221/ -- License: Attribution 4.0

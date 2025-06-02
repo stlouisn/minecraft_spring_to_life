@@ -47,6 +47,7 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
+import java.util.Set;
 import java.util.function.Function;
 
 public final class SpringToLifeModFabric implements ModInitializer {
@@ -75,6 +76,7 @@ public final class SpringToLifeModFabric implements ModInitializer {
         SpawnPlacements.register(STLEntityTypes.WARM_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
 
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.LEAF_LITTER.get(), 60, 100);
+        FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.WILDFLOWERS.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.BUSH.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.FIREFLY_BUSH.get(), 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.SHORT_DRY_GRASS.get(), 60, 100);
@@ -82,6 +84,7 @@ public final class SpringToLifeModFabric implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(STLBlocks.CACTUS_FLOWER.get(), 60, 100);
 
         CompostingChanceRegistry.INSTANCE.add(STLBlocks.LEAF_LITTER.get(), 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(STLBlocks.WILDFLOWERS.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.BUSH.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.FIREFLY_BUSH.get(), 0.3f);
         CompostingChanceRegistry.INSTANCE.add(STLItems.SHORT_DRY_GRASS.get(), 0.3f);
@@ -93,12 +96,13 @@ public final class SpringToLifeModFabric implements ModInitializer {
         FuelRegistry.INSTANCE.add(STLItems.TALL_DRY_GRASS.get(), 5 * 20);
 
         VillagerTrades.ItemListing dryGrassTrade = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.TALL_DRY_GRASS.get()), 12, 0, 0);
+        VillagerTrades.ItemListing wildflowersTrade = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 1), new ItemStack(STLBlocks.WILDFLOWERS.get()), 12, 0, 0);
         VillagerTrades.ItemListing fireflyBushTrade = (trader, random) -> new MerchantOffer(new ItemCost(Items.EMERALD, 3), new ItemStack(STLBlocks.FIREFLY_BUSH.get()), 12, 0, 0);
 
-        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.add(dryGrassTrade));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> factories.addAll(Set.of(dryGrassTrade, wildflowersTrade)));
         TradeOfferHelper.registerWanderingTraderOffers(2, factories -> factories.add(fireflyBushTrade));
         //noinspection UnstableApiUsage
-        TradeOfferHelper.registerRebalancedWanderingTraderOffers(wanderingTraderOffersBuilder -> wanderingTraderOffersBuilder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL, dryGrassTrade));
+        TradeOfferHelper.registerRebalancedWanderingTraderOffers(wanderingTraderOffersBuilder -> wanderingTraderOffersBuilder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL, dryGrassTrade, wildflowersTrade));
         //noinspection UnstableApiUsage
         TradeOfferHelper.registerRebalancedWanderingTraderOffers(wanderingTraderOffersBuilder -> wanderingTraderOffersBuilder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL, fireflyBushTrade));
 

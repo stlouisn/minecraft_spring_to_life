@@ -3,6 +3,9 @@
     "spring_to_life:leaf_litter": {
       "chance": 0.3
     },
+    "spring_to_life:wildflowers": {
+      "chance": 0.3
+    },
     "spring_to_life:bush": {
       "chance": 0.3
     },

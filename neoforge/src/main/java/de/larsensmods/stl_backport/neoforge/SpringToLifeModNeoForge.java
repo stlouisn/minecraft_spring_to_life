@@ -19,6 +19,7 @@ public final class SpringToLifeModNeoForge {
 
         //Register override keys
         registrationProvider.addOverrideKey("block:leaf_litter", (Function<BlockBehaviour.Properties, Block>) STLLeafLitterBlockNeoForge::new);
+        registrationProvider.addOverrideKey("block:wildflowers", (Function<BlockBehaviour.Properties, Block>) PinkPetalsBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:bush", (Function<BlockBehaviour.Properties, Block>) STLBushBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:firefly_bush", (Function<BlockBehaviour.Properties, Block>) STLFireflyBushBlockNeoForge::new);
         registrationProvider.addOverrideKey("block:short_dry_grass", (Function<BlockBehaviour.Properties, Block>) STLShortDryGrassBlockNeoForge::new);

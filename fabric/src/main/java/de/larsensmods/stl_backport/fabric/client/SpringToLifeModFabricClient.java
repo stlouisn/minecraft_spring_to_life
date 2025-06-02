@@ -41,6 +41,7 @@ public final class SpringToLifeModFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(STLModelLayers.COLD_COW, ColdCowModel::createBodyLayer);
 
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.LEAF_LITTER.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.WILDFLOWERS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.FIREFLY_BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(STLBlocks.SHORT_DRY_GRASS.get(), RenderType.cutout());
