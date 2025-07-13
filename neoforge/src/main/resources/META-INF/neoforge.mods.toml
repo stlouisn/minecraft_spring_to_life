@@ -6,7 +6,7 @@ issueTrackerURL = "https://github.com/stlouisn/minecraft_spring_to_life/issues"
 [[mods]]
 modId = "spring_to_life"
 version = "${version}"
-displayName = "Spring to Life: Bushes"
+displayName = "Spring to Life: Bushes [C]"
 authors = "STL"
 description = "Transforming ordinary landscapes into glowing havens of tranquility and beauty."
 logoFile = "logo.png"
