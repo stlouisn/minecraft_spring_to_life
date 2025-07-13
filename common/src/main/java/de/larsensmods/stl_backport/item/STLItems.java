@@ -11,7 +11,6 @@ import java.util.function.Supplier;
 
 public class STLItems {
 
-    //BLOCK ITEMS
     public static Supplier<Item> BUSH;
     public static Supplier<Item> FIREFLY_BUSH;
 

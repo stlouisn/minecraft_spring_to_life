@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class STLBushBlockNeoForge extends STLBushBlock {
+
     public STLBushBlockNeoForge(Properties properties) {
         super(properties);
     }

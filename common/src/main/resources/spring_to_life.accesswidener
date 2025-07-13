@@ -1,6 +1,0 @@
-accessWidener v2 named
-
-accessible field net/minecraft/world/level/biome/Biome climateSettings Lnet/minecraft/world/level/biome/Biome$ClimateSettings;
-accessible class net/minecraft/world/level/biome/Biome$ClimateSettings
-
-accessible method net/minecraft/world/level/block/PinkPetalsBlock <init> (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V

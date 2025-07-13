@@ -1,6 +1,5 @@
 package de.larsensmods.stl_backport.neoforge.register;
 
-import com.mojang.serialization.MapCodec;
 import de.larsensmods.regutil.IRegistrationProvider;
 import de.larsensmods.stl_backport.SpringToLifeMod;
 import net.minecraft.core.particles.ParticleOptions;
@@ -8,7 +7,6 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -16,7 +14,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -54,7 +51,6 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
         overrideKeys.put(key, value);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Supplier<Block> registerBlock(String key, Function<BlockBehaviour.Properties, Block> constructor, BlockBehaviour.Properties properties) {
         if (overrideKeys.containsKey("block:" + key) && overrideKeys.get("block:" + key) instanceof Function<?, ?> function) {
@@ -67,10 +63,6 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     @Override
     public Supplier<CreativeModeTab> registerCreativeTab(String key, Supplier<CreativeModeTab.Builder> tab) {
         return TAB_REGISTER.register(key, tab.get()::build);
-    }
-
-    public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String key, Supplier<EntityType.Builder<T>> entityTypeBuilder) {
-        return ENTITY_TYPE_REGISTER.register(key, () -> entityTypeBuilder.get().build(key));
     }
 
     @Override
@@ -95,11 +87,6 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     @Override
     public Supplier<SoundEvent> registerSoundEvent(String key, Supplier<SoundEvent> soundEvent) {
         return SOUND_REGISTER.register(key, soundEvent);
-    }
-
-    @Override
-    public <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> registerTreeDecoratorType(String key, MapCodec<T> treeDecoratorTypeCodec) {
-        return TREE_DECORATOR_REGISTER.register(key, () -> new TreeDecoratorType<>(treeDecoratorTypeCodec));
     }
 
 }
