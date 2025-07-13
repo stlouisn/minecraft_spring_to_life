@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/flowerbed_1",
-  "textures": {
-    "flowerbed": "spring_to_life:block/wildflowers",
-    "stem": "spring_to_life:block/wildflowers_stem"
-  },
-  "render_type": "cutout"
-}

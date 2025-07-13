@@ -17,7 +17,7 @@ public class DryFoliageColor {
     }
 
     private static int get(double tempParam, double downfallParam, int[] pixelValues, int defaultColor) {
-        if(!hasInitialized){
+        if (!hasInitialized) {
             try {
                 //noinspection deprecation
                 pixels = LegacyStuffWrapper.getPixels(Minecraft.getInstance().getResourceManager(), ResourceLocation.fromNamespaceAndPath(SpringToLifeMod.MOD_ID, "textures/colormap/dry_foliage.png"));
@@ -28,8 +28,8 @@ public class DryFoliageColor {
         }
 
         downfallParam *= tempParam;
-        int var0 = (int)((1.0 - tempParam) * 255.0);
-        int var1 = (int)((1.0 - downfallParam) * 255.0);
+        int var0 = (int) ((1.0 - tempParam) * 255.0);
+        int var1 = (int) ((1.0 - downfallParam) * 255.0);
         int var2 = var1 << 8 | var0;
         return var2 >= pixelValues.length ? defaultColor : pixelValues[var2];
     }

@@ -1,6 +1,8 @@
 {
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_badlands",
-  "features": [ "spring_to_life:patch_firefly_bush_water" ],
+  "features": [
+    "spring_to_life:patch_firefly_bush_water"
+  ],
   "step": "vegetal_decoration"
 }

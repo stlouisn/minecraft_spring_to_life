@@ -55,7 +55,7 @@ public class STLBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     private Optional<BlockPos> getValidSpreadPos(List<Direction> directions, LevelReader levelReader, BlockPos blockPos, BlockState state) {
-        for(Direction dir : directions) {
+        for (Direction dir : directions) {
             BlockPos pos = blockPos.relative(dir);
             if (levelReader.isEmptyBlock(pos) && state.canSurvive(levelReader, pos)) {
                 return Optional.of(pos);

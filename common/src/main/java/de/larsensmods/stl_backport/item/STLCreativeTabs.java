@@ -17,25 +17,10 @@ public class STLCreativeTabs {
 
         SPRING_TO_LIFE_TAB = provider.registerCreativeTab("spring_to_life_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
                 .title(Component.translatable("itemGroup.spring_to_life"))
-                .icon(() -> new ItemStack(STLItems.BROWN_EGG.get()))
+                .icon(() -> new ItemStack(STLItems.FIREFLY_BUSH.get()))
                 .displayItems((displayParameters, output) -> {
-                    output.accept(STLItems.WARM_CHICKEN_SPAWN_EGG.get());
-                    output.accept(STLItems.COLD_CHICKEN_SPAWN_EGG.get());
-                    output.accept(STLItems.WARM_PIG_SPAWN_EGG.get());
-                    output.accept(STLItems.COLD_PIG_SPAWN_EGG.get());
-                    output.accept(STLItems.WARM_COW_SPAWN_EGG.get());
-                    output.accept(STLItems.COLD_COW_SPAWN_EGG.get());
-
-                    output.accept(STLItems.BLUE_EGG.get());
-                    output.accept(STLItems.BROWN_EGG.get());
-
-                    output.accept(STLItems.LEAF_LITTER.get());
-                    output.accept(STLItems.WILDFLOWERS.get());
                     output.accept(STLItems.BUSH.get());
                     output.accept(STLItems.FIREFLY_BUSH.get());
-                    output.accept(STLItems.SHORT_DRY_GRASS.get());
-                    output.accept(STLItems.TALL_DRY_GRASS.get());
-                    output.accept(STLItems.CACTUS_FLOWER.get());
                 }));
     }
 

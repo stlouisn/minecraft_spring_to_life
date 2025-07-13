@@ -10,5 +10,4 @@ pluginManagement {
 rootProject.name = 'spring_to_life'
 
 include 'common'
-include 'fabric'
 include 'neoforge'

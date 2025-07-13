@@ -57,7 +57,7 @@ public class NeoForgeRegistrationProvider implements IRegistrationProvider {
     @SuppressWarnings("unchecked")
     @Override
     public Supplier<Block> registerBlock(String key, Function<BlockBehaviour.Properties, Block> constructor, BlockBehaviour.Properties properties) {
-        if(overrideKeys.containsKey("block:" + key) && overrideKeys.get("block:" + key) instanceof Function<?, ?> function) {
+        if (overrideKeys.containsKey("block:" + key) && overrideKeys.get("block:" + key) instanceof Function<?, ?> function) {
             SpringToLifeMod.LOGGER.info("Overriding Block {}", key);
             return BLOCK_REGISTER.register(key, () -> ((Function<BlockBehaviour.Properties, Block>) function).apply(properties));
         }

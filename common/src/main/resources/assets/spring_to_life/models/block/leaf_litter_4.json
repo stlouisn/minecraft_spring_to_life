@@ -1,7 +1,0 @@
-{
-  "parent": "spring_to_life:block/template_leaf_litter_4",
-  "textures": {
-    "texture": "spring_to_life:block/leaf_litter"
-  },
-  "render_type": "cutout"
-}

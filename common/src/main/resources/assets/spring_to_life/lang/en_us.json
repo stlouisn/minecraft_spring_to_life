@@ -1,31 +1,6 @@
 {
-  "entity.spring_to_life.warm_chicken": "Warm Chicken",
-  "entity.spring_to_life.cold_chicken": "Cold Chicken",
-  "entity.spring_to_life.warm_cow": "Warm Cow",
-  "entity.spring_to_life.cold_cow": "Cold Cow",
-  "entity.spring_to_life.warm_pig": "Warm Pig",
-  "entity.spring_to_life.cold_pig": "Cold Pig",
-
-  "item.spring_to_life.warm_chicken_spawn_egg": "Warm Chicken Spawn Egg",
-  "item.spring_to_life.cold_chicken_spawn_egg": "Cold Chicken Spawn Egg",
-  "item.spring_to_life.warm_cow_spawn_egg": "Warm Cow Spawn Egg",
-  "item.spring_to_life.cold_cow_spawn_egg": "Cold Cow Spawn Egg",
-  "item.spring_to_life.warm_pig_spawn_egg": "Warm Pig Spawn Egg",
-  "item.spring_to_life.cold_pig_spawn_egg": "Cold Pig Spawn Egg",
-
-  "item.spring_to_life.blue_egg": "Blue Egg",
-  "item.spring_to_life.brown_egg": "Brown Egg",
-
-  "block.spring_to_life.leaf_litter": "Leaf Litter",
-  "block.spring_to_life.wildflowers": "Wildflowers",
   "block.spring_to_life.bush": "Bush",
   "block.spring_to_life.firefly_bush": "Firefly Bush",
-  "block.spring_to_life.short_dry_grass": "Short Dry Grass",
-  "block.spring_to_life.tall_dry_grass": "Tall Dry Grass",
-  "block.spring_to_life.cactus_flower": "Cactus Flower",
-
   "itemGroup.spring_to_life": "Spring to Life",
-
-  "subtitles.block.dry_grass.ambient": "Dry Grass Wind",
   "subtitles.block.firefly_bush.ambient": "Firefly Bush Ambient"
 }

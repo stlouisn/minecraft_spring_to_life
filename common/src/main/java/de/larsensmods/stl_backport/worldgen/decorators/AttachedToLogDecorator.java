@@ -37,7 +37,7 @@ public class AttachedToLogDecorator extends TreeDecorator {
     public void place(TreeDecorator.Context decoratorContext) {
         RandomSource randomSource = decoratorContext.random();
 
-        for(BlockPos pos : Util.shuffledCopy(decoratorContext.logs(), randomSource)) {
+        for (BlockPos pos : Util.shuffledCopy(decoratorContext.logs(), randomSource)) {
             Direction direction = Util.getRandom(this.directions, randomSource);
             BlockPos changePos = pos.relative(direction);
             if (randomSource.nextFloat() <= this.probability && decoratorContext.isAir(changePos)) {
@@ -50,5 +50,5 @@ public class AttachedToLogDecorator extends TreeDecorator {
     protected @NotNull TreeDecoratorType<?> type() {
         return STLDecoratorTypes.ATTACHED_TO_LOG.get();
     }
-    
+
 }

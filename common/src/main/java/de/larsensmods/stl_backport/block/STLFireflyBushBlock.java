@@ -37,9 +37,9 @@ public class STLFireflyBushBlock extends BushBlock implements BonemealableBlock 
         level.updateSkyBrightness();
 
         if (level.getMaxLocalRawBrightness(pos) <= 13 && random.nextDouble() <= 0.7) {
-            double partX = (double)pos.getX() + random.nextDouble() * 10.0 - 5.0;
-            double partY = (double)pos.getY() + random.nextDouble() * 5.0;
-            double partZ = (double)pos.getZ() + random.nextDouble() * 10.0 - 5.0;
+            double partX = (double) pos.getX() + random.nextDouble() * 10.0 - 5.0;
+            double partY = (double) pos.getY() + random.nextDouble() * 5.0;
+            double partZ = (double) pos.getZ() + random.nextDouble() * 10.0 - 5.0;
             level.addParticle(STLParticleTypes.FIREFLY.get(), partX, partY, partZ, 0.0, 0.0, 0.0);
         }
     }
@@ -68,14 +68,15 @@ public class STLFireflyBushBlock extends BushBlock implements BonemealableBlock 
     private boolean isMoonVisible(Level level) {
         if (!level.dimensionType().natural()) {
             return false;
-        } else {
-            int time = (int)(level.getDayTime() % 24000L);
+        }
+        else {
+            int time = (int) (level.getDayTime() % 24000L);
             return time >= 12600 && time <= 23400;
         }
     }
 
     private Optional<BlockPos> getValidSpreadPos(List<Direction> directions, LevelReader levelReader, BlockPos blockPos, BlockState state) {
-        for(Direction dir : directions) {
+        for (Direction dir : directions) {
             BlockPos pos = blockPos.relative(dir);
             if (levelReader.isEmptyBlock(pos) && state.canSurvive(levelReader, pos)) {
                 return Optional.of(pos);

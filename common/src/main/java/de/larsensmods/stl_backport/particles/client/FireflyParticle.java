@@ -31,8 +31,9 @@ public class FireflyParticle extends TextureSheetParticle {
         super.tick();
         if (!this.level.getBlockState(BlockPos.containing(this.x, this.y, this.z)).isAir()) {
             this.remove();
-        } else {
-            this.setAlpha(this.getFadeAmount(this.getLifetimeProgress((float)this.age), 0.3F, 0.5F));
+        }
+        else {
+            this.setAlpha(this.getFadeAmount(this.getLifetimeProgress((float) this.age), 0.3F, 0.5F));
             if (Math.random() > 0.95 || this.age == 1) {
                 this.setParticleSpeed(-0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random());
             }
@@ -41,17 +42,18 @@ public class FireflyParticle extends TextureSheetParticle {
 
     @Override
     protected int getLightColor(float partialTick) {
-        return (int)(255.0F * getFadeAmount(this.getLifetimeProgress((float)this.age + partialTick), 0.1F, 0.3F));
+        return (int) (255.0F * getFadeAmount(this.getLifetimeProgress((float) this.age + partialTick), 0.1F, 0.3F));
     }
 
     private float getLifetimeProgress(float age) {
-        return Mth.clamp(age / (float)this.lifetime, 0.0F, 1.0F);
+        return Mth.clamp(age / (float) this.lifetime, 0.0F, 1.0F);
     }
 
     private float getFadeAmount(float lifetimeProgress, float mod1, float mod2) {
         if (lifetimeProgress >= 1.0F - mod1) {
             return (1.0F - lifetimeProgress) / mod1;
-        } else {
+        }
+        else {
             return lifetimeProgress <= mod2 ? lifetimeProgress / mod2 : 1.0F;
         }
     }

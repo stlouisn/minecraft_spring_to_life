@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "spring_to_life:block/tall_dry_grass"
-  },
-  "render_type": "cutout"
-}

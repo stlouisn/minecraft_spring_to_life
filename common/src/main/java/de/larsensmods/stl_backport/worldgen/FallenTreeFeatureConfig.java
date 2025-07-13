@@ -29,5 +29,5 @@ public class FallenTreeFeatureConfig implements FeatureConfiguration {
         this.stumpDecorators = stumpDecorators;
         this.logDecorators = logDecorators;
     }
-    
+
 }

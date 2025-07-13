@@ -78,8 +78,8 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
     private void attemptToPlaceBlockAbove(TreeDecorator.Context decoratorContext, BlockPos pos) {
         BlockPos abovePos = pos.above();
         if (decoratorContext.level().isStateAtPosition(abovePos, state -> state.isAir() || state.is(Blocks.VINE))
-                && decoratorContext.level().isStateAtPosition(pos, BlockBehaviour.BlockStateBase::isSolid)
-                && decoratorContext.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY() <= abovePos.getY()) {
+            && decoratorContext.level().isStateAtPosition(pos, BlockBehaviour.BlockStateBase::isSolid)
+            && decoratorContext.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY() <= abovePos.getY()) {
             decoratorContext.setBlock(abovePos, this.blockStateProvider.getState(decoratorContext.random(), abovePos));
         }
     }
@@ -90,10 +90,12 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
         List<BlockPos> logs = decoratorContext.logs();
         if (roots.isEmpty()) {
             lowestTrunk.addAll(logs);
-        } else if (!logs.isEmpty() && roots.getFirst().getY() == logs.getFirst().getY()) {
+        }
+        else if (!logs.isEmpty() && roots.getFirst().getY() == logs.getFirst().getY()) {
             lowestTrunk.addAll(logs);
             lowestTrunk.addAll(roots);
-        } else {
+        }
+        else {
             lowestTrunk.addAll(roots);
         }
 
