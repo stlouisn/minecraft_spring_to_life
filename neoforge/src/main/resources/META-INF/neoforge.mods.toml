@@ -7,15 +7,15 @@ issueTrackerURL = "https://github.com/stlouisn/minecraft_spring_to_life/issues"
 modId = "spring_to_life"
 version = "${version}"
 displayName = "Spring to Life: Bushes [C]"
+logoFile = "logo.png"
 authors = "STL"
 description = "Transforming ordinary landscapes into glowing havens of tranquility and beauty."
-logoFile = "logo.png"
-modURL = "https://github.com/stlouisn/minecraft_spring_to_life/issues"
+displayURL = "https://github.com/stlouisn/minecraft_spring_to_life/issues"
 
 [[dependencies.spring_to_life]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[21.1.1,)"
 ordering = "NONE"
 side = "BOTH"
 
